@@ -1,0 +1,11 @@
+Model Information:
+* title:	Elevator Building the apartment
+* source:	https://sketchfab.com/3d-models/elevator-building-the-apartment-b5567955910b4c1aa0adcec8ca9d5beb
+* author:	adventurer (https://sketchfab.com/ahmagh2e)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Elevator Building the apartment" (https://sketchfab.com/3d-models/elevator-building-the-apartment-b5567955910b4c1aa0adcec8ca9d5beb) by adventurer (https://sketchfab.com/ahmagh2e) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

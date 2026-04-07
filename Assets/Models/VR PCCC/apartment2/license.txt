@@ -1,0 +1,11 @@
+Model Information:
+* title:	Apartment
+* source:	https://sketchfab.com/3d-models/apartment-8754655f3a314e53bdd196eee85d43d5
+* author:	DJ Baylon (https://sketchfab.com/chibot3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Apartment" (https://sketchfab.com/3d-models/apartment-8754655f3a314e53bdd196eee85d43d5) by DJ Baylon (https://sketchfab.com/chibot3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

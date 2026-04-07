@@ -1,0 +1,11 @@
+Model Information:
+* title:	fire extinguisher
+* source:	https://sketchfab.com/3d-models/fire-extinguisher-90c60e3bc9fb4fe9966e4cea3aac0e30
+* author:	Azamat Blender 3d (https://sketchfab.com/azamata2019)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "fire extinguisher" (https://sketchfab.com/3d-models/fire-extinguisher-90c60e3bc9fb4fe9966e4cea3aac0e30) by Azamat Blender 3d (https://sketchfab.com/azamata2019) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

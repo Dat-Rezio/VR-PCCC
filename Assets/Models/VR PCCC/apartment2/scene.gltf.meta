@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 84521039448b4154dadd1825bb2b433a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\Models\VR PCCC\apartment2\scene.bin
+    assetPath: Assets\Models\VR PCCC\apartment2\scene.bin
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader1_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader1_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader38_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader38_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader36_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader36_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader8_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader8_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader39_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader39_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader37_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader37_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader33_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader33_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader12_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader12_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader9_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader9_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader13_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader13_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader42_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader42_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader24_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader24_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader18_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader18_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader5_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader5_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader2_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader2_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader23_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader23_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader21_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader21_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader25_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader25_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader28_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader28_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader10_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader10_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader3_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader3_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader29_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader29_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader4_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader4_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader16_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader16_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader7_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader7_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader31_baseColor.jpeg
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader31_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader11_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader11_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader40_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader40_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader15_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader15_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader14_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader14_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader17_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader17_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader6_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader6_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader22_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader22_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader20_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader20_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader19_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader19_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader30_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader30_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader35_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader35_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader34_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader34_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\SM_WallLiving_q3VRayMtl37SG1_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\SM_WallLiving_q3VRayMtl37SG1_baseColor.png
+  - type: 1
+    originalUri: Assets\Models\VR PCCC\apartment2\textures\surfaceShader27_baseColor.png
+    assetPath: Assets\Models\VR PCCC\apartment2\textures\surfaceShader27_baseColor.png
+  reportItems: []
