@@ -172,11 +172,40 @@ namespace VRPCCC.Player
         //  Detection Logic
         // ------------------------------------------------------------------ //
 
+#if UNITY_EDITOR
+        // Biến lưu trạng thái bật/tắt (Toggle) khi test trên bàn phím
+        static bool s_EditorSimulateDucking = false;
+#endif
+
         void UpdateDuckingState(float headY)
         {
             if (!m_IsCalibrated) return;
 
             bool headBelowThreshold = headY < m_DuckThresholdHeight;
+
+            // --- HỖ TRỢ TEST TRONG EDITOR KHÔNG CÓ KÍNH VR ---
+#if UNITY_EDITOR
+            bool cJustPressed = false;
+#if ENABLE_INPUT_SYSTEM
+            if (UnityEngine.InputSystem.Keyboard.current != null)
+            {
+                cJustPressed = UnityEngine.InputSystem.Keyboard.current.cKey.wasPressedThisFrame;
+            }
+#endif
+#if ENABLE_LEGACY_INPUT_MANAGER
+            cJustPressed = cJustPressed || Input.GetKeyDown(KeyCode.C);
+#endif
+
+            // Nếu vừa bấm phím C, ta đảo ngược trạng thái Cúi <-> Đứng
+            if (cJustPressed)
+            {
+                s_EditorSimulateDucking = !s_EditorSimulateDucking;
+            }
+
+            // Ép chiều cao giả lập vào logic kết quả
+            headBelowThreshold = s_EditorSimulateDucking;
+#endif
+            // -------------------------------------------------
 
             if (headBelowThreshold && !m_IsDucking)
             {

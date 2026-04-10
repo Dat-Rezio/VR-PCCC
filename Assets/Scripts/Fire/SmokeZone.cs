@@ -40,9 +40,7 @@ namespace VRPCCC.Fire
         // ------------------------------------------------------------------ //
 
         Collider m_Collider;
-        Transform m_PlayerCamera;
-        bool m_PlayerInsideZone;
-        bool m_PlayerInDanger;  // trong zone VÀ đầu cao hơn safe height
+        bool m_PlayerInDanger;  // camera nằm trong zone VÀ cao hơn safe height
 
         /// <summary>Mức độ khói (0-1).</summary>
         public float SmokeDensity => m_SmokeDensity;
@@ -61,86 +59,64 @@ namespace VRPCCC.Fire
         {
             if (m_SmokeParticles != null && m_PlayOnStart)
                 m_SmokeParticles.Play();
+
+            // Tìm camera ngay từ đầu — không cần chờ trigger
+            if (Camera.main == null)
+                Debug.LogWarning("[SmokeZone] Không tìm thấy Camera.main !");
         }
 
         void Update()
         {
-            if (!m_PlayerInsideZone || m_PlayerCamera == null) return;
+            if (Camera.main == null || m_Collider == null) return;
 
-            // Tính chiều cao của đầu người chơi so với đáy của zone
-            float zoneBottom = m_Collider.bounds.min.y;
-            float headHeightInZone = m_PlayerCamera.position.y - zoneBottom;
+            var camPos = Camera.main.transform.position;
 
-            bool headInDanger = headHeightInZone > m_SafeHeightFromBottom;
+            // ── 1. Dùng ClosestPoint để check chính xác camera có trong collider không ──
+            //    Nếu camPos NẰM TRONG collider → ClosestPoint trả về chính camPos.
+            //    Nếu ở NGOÀI → trả về điểm gần nhất trên bề mặt (khác camPos).
+            Vector3 closest      = m_Collider.ClosestPoint(camPos);
+            bool    insideZone   = Vector3.SqrMagnitude(closest - camPos) < 0.0001f;  // ~1mm tolerance
 
+            // ── 2. Camera có cao hơn ngưỡng an toàn không? ──────────────────
+            //    Đo từ đáy collider (world Y thấp nhất của bounds).
+            float zoneBottom       = m_Collider.bounds.min.y;
+            float headHeightInZone = camPos.y - zoneBottom;
+            bool  headInDanger     = insideZone && headHeightInZone > m_SafeHeightFromBottom;
+
+            // ── 3. Phát events nếu trạng thái thay đổi ──────────────────────
             if (headInDanger && !m_PlayerInDanger)
             {
                 m_PlayerInDanger = true;
                 OnPlayerEnterSmoke?.Invoke(m_SmokeDensity);
-                Debug.Log($"[SmokeZone] '{name}': Đầu người chơi trong vùng khói nguy hiểm! (cao {headHeightInZone:F2}m so với đáy zone)");
+                Debug.Log($"[SmokeZone] '{name}': Vào khói! " +
+                          $"cam.y={camPos.y:F2} | zoneBottom={zoneBottom:F2} | heightInZone={headHeightInZone:F2} | threshold={m_SafeHeightFromBottom:F2}");
             }
             else if (!headInDanger && m_PlayerInDanger)
             {
                 m_PlayerInDanger = false;
                 OnPlayerExitSmoke?.Invoke();
-                Debug.Log($"[SmokeZone] '{name}': Người chơi CÚI NGƯỜI né khói thành công!");
+                Debug.Log($"[SmokeZone] '{name}': Thoát khói! " +
+                          $"cam.y={camPos.y:F2} | insideZone={insideZone} | heightInZone={headHeightInZone:F2}");
             }
         }
 
-        // ------------------------------------------------------------------ //
-        //  Trigger Callbacks
-        // ------------------------------------------------------------------ //
-
-        void OnTriggerEnter(Collider other)
+        // Debug: Bấm chuột phải vào SmokeZone component → "Log Zone Debug Info"
+        [ContextMenu("Log Zone Debug Info")]
+        void LogDebugInfo()
         {
-            // Tìm camera trong object hoặc children (hỗ trợ XR Origin structure)
-            var cam = FindCameraInHierarchy(other.gameObject);
-            if (cam == null) return;
-
-            m_PlayerCamera = cam;
-            m_PlayerInsideZone = true;
-            Debug.Log($"[SmokeZone] '{name}': Người chơi vào vùng khói.");
-        }
-
-        void OnTriggerExit(Collider other)
-        {
-            if (m_PlayerCamera == null) return;
-            // Chỉ xử lý nếu đúng camera đã vào
-            var cam = FindCameraInHierarchy(other.gameObject);
-            if (cam != m_PlayerCamera) return;
-
-            m_PlayerInsideZone = false;
-            if (m_PlayerInDanger)
-            {
-                m_PlayerInDanger = false;
-                OnPlayerExitSmoke?.Invoke();
-            }
-            m_PlayerCamera = null;
-            Debug.Log($"[SmokeZone] '{name}': Người chơi rời vùng khói.");
-        }
-
-        // ------------------------------------------------------------------ //
-        //  Helpers
-        // ------------------------------------------------------------------ //
-
-        static Transform FindCameraInHierarchy(GameObject go)
-        {
-            // Tìm Camera.main trực tiếp
+            if (m_Collider == null) m_Collider = GetComponent<Collider>();
+            var b = m_Collider.bounds;
+            Debug.Log($"[SmokeZone] '{name}' BOUNDS: " +
+                      $"min={b.min} | max={b.max} | center={b.center} | size={b.size}");
             if (Camera.main != null)
             {
-                // Kiểm tra xem go hoặc ancestor của Camera.main có trùng không
-                Transform t = Camera.main.transform;
-                while (t != null)
-                {
-                    if (t == go.transform) return Camera.main.transform;
-                    t = t.parent;
-                }
+                var cam = Camera.main.transform.position;
+                var cp  = m_Collider.ClosestPoint(cam);
+                Debug.Log($"[SmokeZone] Camera.main pos={cam} | ClosestPoint={cp} | " +
+                          $"sqrDist={Vector3.SqrMagnitude(cp - cam):F6} | insideZone={Vector3.SqrMagnitude(cp - cam) < 0.0001f}");
             }
-
-            // Fallback: tìm Camera component trong children
-            var cam = go.GetComponentInChildren<Camera>();
-            return cam != null ? cam.transform : null;
         }
+
 
         /// <summary>Bật/tắt vùng khói từ code.</summary>
         public void SetSmokeActive(bool active)
@@ -155,7 +131,6 @@ namespace VRPCCC.Fire
             if (!active && m_PlayerInDanger)
             {
                 m_PlayerInDanger = false;
-                m_PlayerInsideZone = false;
                 OnPlayerExitSmoke?.Invoke();
             }
         }

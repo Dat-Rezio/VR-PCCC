@@ -77,7 +77,7 @@ namespace VRPCCC.Player
         float m_CurrentAlpha;       // alpha hiện tại
         float m_SmokeDensity;       // mật độ khói từ SmokeZone (0-1)
         bool m_InSmokeZone;         // đang trong vùng khói
-        bool m_IsDucking;           // đang cúi người
+        public bool m_IsDucking;           // đang cúi người
 
         Coroutine m_DangerFlashCoroutine;
 
