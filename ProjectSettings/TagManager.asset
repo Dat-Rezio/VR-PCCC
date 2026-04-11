@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - PlayerHand
+  - Root_Fire
   layers:
   - Default
   - TransparentFX
