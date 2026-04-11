@@ -32,8 +32,11 @@ namespace VRPCCC.Scenario2
         [Tooltip("ScenarioManager trung tâm.")]
         [SerializeField] FirefightingScenarioManager m_Manager;
 
-        [Tooltip("FireSource - đám lửa cần dập.")]
+        [Tooltip("FireSource fallback (Dùng khi test lẻ không có Manager).")]
         [SerializeField] FireSource m_FireSource;
+
+        /// <summary>Lấy đám lửa đang cháy hiện tại từ Manager (Phase 1 hay Phase 2).</summary>
+        FireSource ActiveFire => m_Manager != null ? m_Manager.GetActiveFire() : m_FireSource;
 
         [Tooltip("HUD để hiển thị cảnh báo.")]
         [SerializeField] ScenarioHUD m_HUD;
@@ -269,12 +272,12 @@ namespace VRPCCC.Scenario2
 
         void HandleDistanceCheck()
         {
-            if (m_DistanceCheckCooldown > 0f || m_FireSource == null) return;
+            if (m_DistanceCheckCooldown > 0f || ActiveFire == null) return;
             m_DistanceCheckCooldown = 1.5f; // poll mỗi 1.5 giây
 
             float dist = Vector3.Distance(
                 Camera.main != null ? Camera.main.transform.position : transform.position,
-                m_FireSource.transform.position
+                ActiveFire.transform.position
             );
 
             m_Manager?.OnDistanceCheck(dist);
@@ -309,7 +312,7 @@ namespace VRPCCC.Scenario2
 
         void HandleSpray(bool isTriggerPressed)
         {
-            if (m_FireSource == null) return;
+            if (ActiveFire == null) return;
 
             // Kiểm tra tiếp tục nhắm đúng
             bool stillOnTarget = PerformNozzleRaycast(out _);
@@ -317,7 +320,7 @@ namespace VRPCCC.Scenario2
             if (isTriggerPressed && stillOnTarget)
             {
                 StartSpray();
-                m_FireSource.ApplyExtinguishing(Time.deltaTime);
+                ActiveFire.ApplyExtinguishing(Time.deltaTime);
             }
             else
             {

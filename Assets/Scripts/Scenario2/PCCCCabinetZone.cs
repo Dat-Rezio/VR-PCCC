@@ -36,7 +36,6 @@ namespace VRPCCC.Scenario2
         // ──────────────────────────────────────────────────────────────────── //
 
         SphereCollider m_Collider;
-        bool           m_PlayerHasApproached;
 
         // ──────────────────────────────────────────────────────────────────── //
         //  Unity Lifecycle
@@ -57,9 +56,10 @@ namespace VRPCCC.Scenario2
 
         void Update()
         {
-            // Fallback: kiểm tra Camera.main mỗi frame nếu không dùng Physics trigger
-            if (!m_UseCameraFallback || m_PlayerHasApproached) return;
-            if (Camera.main == null) return;
+            // Chỉ kiểm tra khi kịch bản đang yêu cầu người chơi tới Tủ
+            if (m_Manager == null || m_Manager.CurrentState != FirefightingScenarioManager.ScenarioState.ApproachCabinet) return;
+            
+            if (!m_UseCameraFallback || Camera.main == null) return;
 
             // Chỉ check XZ-plane (không tính chiều cao cửa tủ)
             Vector3 cameraXZ = Camera.main.transform.position;
@@ -74,9 +74,9 @@ namespace VRPCCC.Scenario2
         //  Physics Trigger (dự phòng)
         // ──────────────────────────────────────────────────────────────────── //
 
-        void OnTriggerEnter(Collider other)
+        void OnTriggerStay(Collider other)
         {
-            if (m_PlayerHasApproached) return;
+            if (m_Manager == null || m_Manager.CurrentState != FirefightingScenarioManager.ScenarioState.ApproachCabinet) return;
 
             if (other.CompareTag(m_PlayerTag))
                 NotifyApproach();
@@ -88,8 +88,6 @@ namespace VRPCCC.Scenario2
 
         void NotifyApproach()
         {
-            m_PlayerHasApproached = true;
-
             if (m_OpenCabinetPrompt != null)
                 m_OpenCabinetPrompt.SetActive(true);
 
@@ -98,11 +96,9 @@ namespace VRPCCC.Scenario2
             Debug.Log("[CabinetZone] 📦 Người dùng đã tiếp cận tủ PCCC.");
         }
 
-        /// <summary>Đặt lại để có thể phát hiện lại (khi reset kịch bản).</summary>
+        /// <summary>Đặt lại trạng thái tủ (khi reset kịch bản).</summary>
         public void Reset()
         {
-            m_PlayerHasApproached = false;
-
             if (m_OpenCabinetPrompt != null)
                 m_OpenCabinetPrompt.SetActive(false);
         }
@@ -113,9 +109,7 @@ namespace VRPCCC.Scenario2
 
         void OnDrawGizmosSelected()
         {
-            Gizmos.color = m_PlayerHasApproached
-                ? new Color(0f, 1f, 0f, 0.3f)
-                : new Color(0f, 0.8f, 1f, 0.3f);
+            Gizmos.color = new Color(0f, 0.8f, 1f, 0.3f);
 
             Gizmos.DrawSphere(transform.position, m_DetectionRadius);
             Gizmos.color = Color.cyan;

@@ -33,9 +33,16 @@ namespace VRPCCC.Scenario2
         //  Inspector Fields
         // ──────────────────────────────────────────────────────────────────── //
 
-        [Header("Tham chiếu Scene")]
-        [Tooltip("Script điều khiển đám lửa.")]
-        [SerializeField] FireSource m_FireSource;
+        [Tooltip("Đám cháy 1: Tủ lạnh nhà bếp (Cần CO2)")]
+        [SerializeField] FireSource m_FridgeFire;
+
+        [Tooltip("Đám cháy 2: Trong phòng ngủ (Cần ABC)")]
+        [SerializeField] FireSource m_BedroomFire;
+
+        public int CurrentPhase { get; private set; } = 1;
+
+        /// <summary>Trả về FireSource của Phase hiện tại.</summary>
+        public FireSource GetActiveFire() => CurrentPhase == 1 ? m_FridgeFire : m_BedroomFire;
 
         [Tooltip("HUD / UI quản lý hiển thị.")]
         [SerializeField] ScenarioHUD m_HUD;
@@ -88,6 +95,7 @@ namespace VRPCCC.Scenario2
 
         void Start()
         {
+            CurrentPhase = 1;
             // Kịch bản bắt đầu ở trạng thái Idle cho đến khi lửa bùng
             SetState(ScenarioState.Idle);
             m_HUD?.ShowStep("Quan sát môi trường xung quanh...");
@@ -122,12 +130,17 @@ namespace VRPCCC.Scenario2
             m_TimerRunning = true;
             OnScenarioStart?.Invoke();
 
+            string fireMsg = CurrentPhase == 1 
+                ? "<b>🔥 PHÁT HIỆN CHÁY TỦ LẠNH KHU BẾP!</b>" 
+                : "<b>🔥 PHÁT HIỆN CHÁY LIỀM NỆM TRONG PHÒNG NGỦ!</b>";
+
             m_HUD?.ShowStep(
-                "<b>🔥 PHÁT HIỆN ĐÁM CHÁY!</b>\n" +
-                "Tiếp cận tủ PCCC trên tường hành lang."
+                $"{fireMsg}\n" +
+                "Kế tiếp: Tiếp cận tủ PCCC.\n\n" +
+                "<size=14><i><color=#FFD700>[Simulator] Kích chuột vào màn hình Game rồi giữ phím chữ 'I' dể đi lướt tới tủ</color></i></size>"
             );
 
-            Debug.Log("[Scenario2] 🔥 Lửa bùng phát - Bước 1: Tiếp cận tủ PCCC");
+            Debug.Log($"[Scenario2] 🔥 Lửa bùng phát (Phase {CurrentPhase}) - Bước 1: Tiếp cận tủ PCCC");
         }
 
         /// <summary>
@@ -139,14 +152,16 @@ namespace VRPCCC.Scenario2
             if (m_State != ScenarioState.ApproachCabinet) return;
 
             SetState(ScenarioState.SelectEquipment);
+            
+            string requestedExt = CurrentPhase == 1 ? "bình khí CO₂ (màu đen)" : "bình bột ABC (màu đỏ)";
+            
             m_HUD?.ShowStep(
-                "<b>✅ Đã đến tủ PCCC.</b>\n" +
-                "Chọn bình chữa cháy phù hợp.\n\n" +
-                "• Bình bột ABC (màu đỏ)\n" +
-                "• Bình khí CO₂ (màu đen)"
+                "<b> Đã đến tủ PCCC.</b>\n" +
+                $"Hãy chọn ĐÚNG {requestedExt}.\n\n" +
+                "<size=13><i><color=#FFD700>[Simulator]\n1. Bấm 'Tab' chuyển sang [Right Controller]\n2. Đưa tay chạm vào bình\n3. Bấm phím 'G' một lần (đừng đè) để cầm</color></i></size>"
             );
 
-            Debug.Log("[Scenario2] Bước 2: Chọn thiết bị");
+            Debug.Log($"[Scenario2] Bước 2: Chọn thiết bị (Cần {(CurrentPhase == 1 ? "CO2" : "ABC")})");
         }
 
         /// <summary>
@@ -157,24 +172,27 @@ namespace VRPCCC.Scenario2
         {
             if (m_State != ScenarioState.SelectEquipment) return;
 
-            if (isCO2)
+            bool isCorrect = (CurrentPhase == 1 && isCO2) || (CurrentPhase == 2 && !isCO2);
+
+            if (isCorrect)
             {
                 SetState(ScenarioState.CheckDistance);
+                string extName = isCO2 ? "CO₂" : "ABC";
                 m_HUD?.ShowStep(
-                    "<b>✅ Chọn đúng! Bình CO₂ phù hợp cho đám cháy điện.</b>\n\n" +
-                    "Di chuyển đến khoảng cách <b>2–3m</b> so với đám cháy."
+                    $"<b> Đã cầm bình {extName}!</b>\n\n" +
+                    "Di chuyển đến khoảng cách <b>2–3m</b> so với đám cháy.\n\n" +
+                    "<size=13><i><color=#FFD700>[Simulator] Bấm 'Tab' về [HMD] rướn cái đầu lùi ra, HOẶC giữ phím 'K' lùi nguyên cơ thể</color></i></size>"
                 );
-                Debug.Log("[Scenario2] ✅ Chọn CO2 - Kỹ thuật 1: Kiểm tra khoảng cách");
+                Debug.Log($"[Scenario2] Chọn đúng bình {extName} - Kỹ thuật 1: Kiểm tra khoảng cách");
             }
             else
             {
-                // Sai lựa chọn - trừ điểm nhưng không block (cho phép thử lại)
                 m_Score = Mathf.Max(0, m_Score - m_WrongChoicePenalty);
-                m_HUD?.ShowWarning(
-                    "⚠️ Bình bột có thể gây hư hỏng thiết bị điện và khó vệ sinh.\nHãy chọn lại.",
-                    4f
-                );
-                Debug.Log($"[Scenario2] ❌ Chọn sai (ABC) - Trừ {m_WrongChoicePenalty} điểm. Điểm còn: {m_Score}");
+                string wrongMsg = CurrentPhase == 1 
+                    ? " Bình bột ABC không nên dùng cho đồ điện tử tản nhiệt như tủ lạnh (dễ hỏng mạch).\nHãy chọn bình CO₂."
+                    : " Bình khí CO₂ không dập triệt để cháy nệm/chất rắn phòng ngủ (dễ ngạt, cháy lại).\nHãy chọn bình bột ABC.";
+                m_HUD?.ShowWarning(wrongMsg, 4.5f);
+                Debug.Log($"[Scenario2] Chọn sai bình - Trừ {m_WrongChoicePenalty} điểm. Điểm còn: {m_Score}");
             }
         }
 
@@ -190,22 +208,23 @@ namespace VRPCCC.Scenario2
 
             if (distance < m_MinFireDistance)
             {
-                m_HUD?.ShowWarning($"⚠️ Quá gần! Hãy lùi ra xa hơn (cần ≥ {m_MinFireDistance}m).", 1.5f);
+                m_HUD?.ShowWarning($" Quá gần! Hãy lùi ra xa hơn (cần ≥ {m_MinFireDistance}m).", 1.5f);
                 return false;
             }
             else if (distance > m_MaxFireDistance)
             {
-                m_HUD?.ShowWarning($"⚠️ Quá xa! Hãy tiến lại gần hơn (cần ≤ {m_MaxFireDistance}m).", 1.5f);
+                m_HUD?.ShowWarning($" Quá xa! Hãy tiến lại gần hơn (cần ≤ {m_MaxFireDistance}m).", 1.5f);
                 return false;
             }
             else
             {
                 SetState(ScenarioState.PullPin);
                 m_HUD?.ShowStep(
-                    "<b>✅ Khoảng cách tốt!</b>\n\n" +
-                    "Kỹ thuật 2: Rút chốt an toàn khỏi bình."
+                    "<b> Khoảng cách tốt!</b>\n" +
+                    "Kỹ thuật 2: Rút chốt an toàn của bình ở cụm van trên đỉnh bình.\n\n" +
+                    "<size=14><i><color=#FFD700>[Simulator] Bấm phím 'Tab' đổi sang [Left Controller], đưa 2 tay chạm vào chốt bình rồi ngắt phím 'G' lần nữa</color></i></size>"
                 );
-                Debug.Log("[Scenario2] ✅ Khoảng cách OK - Kỹ thuật 2: Rút chốt");
+                Debug.Log("[Scenario2]  Khoảng cách OK - Kỹ thuật 2: Rút chốt");
                 return true;
             }
         }
@@ -219,11 +238,11 @@ namespace VRPCCC.Scenario2
 
             SetState(ScenarioState.AimNozzle);
             m_HUD?.ShowStep(
-                "<b>✅ Đã rút chốt!</b>\n\n" +
-                "Kỹ thuật 3: Hướng vòi phun vào <b>gốc lửa</b>.\n" +
-                "(Không hướng vào ngọn lửa phía trên)"
+                "<b> Đã rút chốt!</b>\n" +
+                "Kỹ thuật 3: Hướng vòi phun vào <b>gốc lửa</b>.\n\n" +
+                "<size=14><i><color=#FFD700>[Simulator] Bấm 'Tab' qua lại [Right Controller]. Nhấn GIỮ CHUỘT PHẢI xoay tay chĩa vòi xuống (Gắn tia Xanh Lá)</color></i></size>"
             );
-            Debug.Log("[Scenario2] ✅ Đã rút chốt - Kỹ thuật 3: Hướng vòi");
+            Debug.Log("[Scenario2]Đã rút chốt - Kỹ thuật 3: Hướng vòi");
         }
 
         /// <summary>
@@ -238,11 +257,11 @@ namespace VRPCCC.Scenario2
             {
                 SetState(ScenarioState.Spraying);
                 m_HUD?.ShowStep(
-                    "<b>✅ Đang nhắm đúng gốc lửa!</b>\n\n" +
-                    "Kỹ thuật 4: Giữ nút bóp cò để phun.\n" +
-                    "Phun liên tục, quét từ trái sang phải."
+                    "<b> Đang nhắm đúng gốc lửa!</b>\n" +
+                    "Kỹ thuật 4: Bóp cò.\n\n" +
+                    "<size=15><i><color=#FFFE00>[Simulator] Đang dùng tay phải -> Hãy nhấp GIỮ CHUỘT TRÁI liên tục 5 giây không thả!</color></i></size>"
                 );
-                Debug.Log("[Scenario2] ✅ Nhắm đúng - Kỹ thuật 4: Phun");
+                Debug.Log("[Scenario2] Nhắm đúng - Kỹ thuật 4: Phun");
             }
         }
 
@@ -263,18 +282,43 @@ namespace VRPCCC.Scenario2
         {
             if (m_State == ScenarioState.Success) return;
 
-            m_TimerRunning = false;
-            SetState(ScenarioState.Success);
+            if (CurrentPhase == 1)
+            {
+                // Hoàn thành Phase 1
+                m_TimerRunning = false; 
+                SetState(ScenarioState.Idle);
+                m_HUD?.ShowStep(
+                    "<b>✅ TUYỆT VỜI! Đã dập tắt đám cháy tủ lạnh.</b>\n" +
+                    "Nhưng khoan đã... có tiếng khét nổ phát ra từ phòng ngủ!"
+                );
+                Debug.Log($"[Scenario2] Hoàn thành Phase 1. Chuyển sang Phase 2...");
+                
+                CurrentPhase = 2; // Chuyển Phase
+                StartCoroutine(TriggerPhase2Delayed());
+            }
+            else
+            {
+                // Hoàn thành Phase 2 tổng thể
+                m_TimerRunning = false;
+                SetState(ScenarioState.Success);
 
-            m_HUD?.ShowSuccess(m_Score);
-            m_HUD?.ShowLegalNote(
-                "Theo <b>Thông tư 150/2020/TT-BCA</b> và <b>TCVN 7435</b>:\n" +
-                "Bình chữa cháy phải được kiểm tra định kỳ ít nhất 1 lần/năm và " +
-                "bảo dưỡng định kỳ để đảm bảo khả năng hoạt động."
-            );
+                m_HUD?.ShowSuccess(m_Score);
+                m_HUD?.ShowLegalNote(
+                    "Theo <b>Thông tư 150/2020/TT-BCA</b> và <b>TCVN 7435</b>:\n" +
+                    "Bảo dưỡng bình chữa cháy định kỳ 1 năm/lần.\n" +
+                    "Bình ABC dùng cho đám cháy rắn lỏng khí, Bình CO2 tốt cho thiết bị điện!"
+                );
 
-            OnScenarioSuccess?.Invoke(m_Score);
-            Debug.Log($"[Scenario2] 🎉 DẬP LỬA THÀNH CÔNG! Điểm cuối: {m_Score}");
+                OnScenarioSuccess?.Invoke(m_Score);
+                Debug.Log($"[Scenario2] DẬP LỬA TỔNG THỂ THÀNH CÔNG! Điểm cuối: {m_Score}");
+            }
+        }
+
+        IEnumerator TriggerPhase2Delayed()
+        {
+            yield return new WaitForSeconds(4f);
+            if (m_BedroomFire != null) m_BedroomFire.Ignite();
+            else Debug.LogWarning("[Scenario2] Chưa kéo file BedroomFire vào Manager!");
         }
 
         // ──────────────────────────────────────────────────────────────────── //
@@ -294,10 +338,12 @@ namespace VRPCCC.Scenario2
             m_Score       = m_InitialScore;
             m_ElapsedTime = 0f;
             m_TimerRunning = false;
+            CurrentPhase  = 1;
             SetState(ScenarioState.Idle);
-            m_FireSource?.ResetFire();
+            m_FridgeFire?.ResetFire();
+            m_BedroomFire?.ResetFire();
             m_HUD?.ResetHUD();
-            Debug.Log("[Scenario2] 🔄 Kịch bản đã được đặt lại.");
+            Debug.Log("[Scenario2] Kịch bản đã được đặt lại.");
         }
     }
 }
