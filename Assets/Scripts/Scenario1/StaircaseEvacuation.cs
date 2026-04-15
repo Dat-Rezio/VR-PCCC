@@ -17,6 +17,9 @@ public class StaircaseEvacuation : MonoBehaviour
     public Transform resetPosition; 
     public UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider teleportationProvider;
 
+    [Header("Kết nối với Tutorial Manager")]
+    public VRPCCC.UI.TutorialManager tutorialManager;
+
     private void OnTriggerEnter(Collider other)
     {
         // Nhận diện Đầu của người chơi (Camera)
@@ -39,13 +42,14 @@ public class StaircaseEvacuation : MonoBehaviour
                 feedbackText.color = Color.green;
             }
             Debug.Log("Thành công: Đi đúng hướng lánh nạn!");
+            tutorialManager.CompleteAction("GoUpstair");
         }
         else
         {
             // --- HƯỚNG ĐI XUỐNG (SAI) ---
             if (feedbackText != null)
             {
-                feedbackText.text = "NGUY HIỂM!\nKhói lửa bốc lên từ tầng dưới. Hãy di chuyển lên tầng lánh nạn ở tầng trên!";
+                feedbackText.text = "NGUY HIỂM!\nKhói lửa bốc lên từ tầng dưới.\nHãy di chuyển lên tầng lánh nạn ở tầng trên!";
                 feedbackText.color = Color.orange;
             }
             Debug.Log("Thất bại: Đi vào vùng cháy. Bắt đầu đẩy lùi bằng XRI.");

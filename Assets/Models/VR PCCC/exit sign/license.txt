@@ -1,0 +1,11 @@
+Model Information:
+* title:	exit sign
+* source:	https://sketchfab.com/3d-models/exit-sign-56000263a5aa466c96df8e1d36533668
+* author:	Adventure Dude (https://sketchfab.com/AdventureDude)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "exit sign" (https://sketchfab.com/3d-models/exit-sign-56000263a5aa466c96df8e1d36533668) by Adventure Dude (https://sketchfab.com/AdventureDude) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using Unity.Tutorials.Core.Editor;
 
 
 public class DoorSafetySimulation : MonoBehaviour
@@ -18,6 +19,8 @@ public class DoorSafetySimulation : MonoBehaviour
     public TextMeshProUGUI statusText;
     public TextMeshProUGUI timerText; // (Tùy chọn) Hiển thị giây còn lại để đổi trạng thái
 
+    [Header("Kết nối với Tutorial Manager")]
+    public VRPCCC.UI.TutorialManager tutorialManager; // Kéo object chứa TutorialManager vào đây
     private void Start()
     {
         if (temperaturePanel != null) temperaturePanel.SetActive(false);
@@ -53,6 +56,11 @@ public class DoorSafetySimulation : MonoBehaviour
         if (!isHot)
         {
             ExecuteTeleport();
+            // MỞ KHÓA HƯỚNG DẪN KHI ĐÃ CHẠM VÀO CỬA
+            if (tutorialManager != null)
+            {
+                tutorialManager.CompleteAction("OpenDoor");
+            }
         }
         else
         {
