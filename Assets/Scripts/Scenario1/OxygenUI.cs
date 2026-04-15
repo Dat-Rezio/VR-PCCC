@@ -5,25 +5,38 @@ namespace VRPCCC.UI
 {
     public class OxygenUI : MonoBehaviour
     {
-        [Header("Giao diện")]
-        [Tooltip("Kéo Image OxygenFill vào đây")]
-        public Image oxygenFillImage;
+        [Header("Quản lý hiển thị")]
+        [Tooltip("Kéo Object 'Canvas' hoặc 'Panel' chứa thanh Oxy vào đây")]
+        public GameObject OxygenUICanvas; 
 
-        [Header("Màu sắc cảnh báo")]
-        [Tooltip("Thiết lập màu từ Đỏ (Hết oxy) sang Xanh (Đầy oxy)")]
+        [Header("Giao diện")]
+        public Image oxygenFillImage;
         public Gradient colorGradient;
 
+        private void Awake()
+        {
+            // Mặc định ẩn đi khi mới vào game
+            SetVisibility(false);
+        }
+
         /// <summary>
-        /// Hàm này sẽ nhận giá trị từ OnOxygenChanged (0 đến 1)
+        /// Hàm này dùng để bật/tắt cả cụm giao diện
         /// </summary>
+        public void SetVisibility(bool isVisible)
+        {
+            if (OxygenUICanvas != null)
+            {
+                OxygenUICanvas.SetActive(isVisible);
+                Debug.Log($"[OxygenUI] Trạng thái hiển thị: {isVisible}");
+            }
+        }
+
         public void UpdateOxygenBar(float ratio)
         {
-            if (oxygenFillImage != null)
+            // Chỉ cập nhật nếu UI đang hiện để tiết kiệm hiệu năng
+            if (OxygenUICanvas != null && OxygenUICanvas.activeSelf && oxygenFillImage != null)
             {
-                // Cập nhật độ dài của thanh
                 oxygenFillImage.fillAmount = ratio;
-                
-                // Cập nhật màu sắc dựa trên tỷ lệ
                 oxygenFillImage.color = colorGradient.Evaluate(ratio);
             }
         }
