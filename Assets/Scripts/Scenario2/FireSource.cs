@@ -4,11 +4,6 @@ using System.Collections;
 
 namespace VRPCCC.Scenario2
 {
-    /// <summary>
-    /// Điều khiển đám lửa tại tủ điện hành lang.
-    /// Gắn lên GameObject chứa ParticleSystem lửa (có BoxCollider tag "Root_Fire").
-    /// Tự động bùng phát sau một khoảng delay và giảm dần khi bị phun CO2.
-    /// </summary>
     [RequireComponent(typeof(AudioSource))]
     public class FireSource : MonoBehaviour
     {
@@ -17,38 +12,32 @@ namespace VRPCCC.Scenario2
         // ──────────────────────────────────────────────────────────────────── //
 
         [Header("Tham Chiếu Hiệu Ứng")]
-        [Tooltip("ParticleSystem của lửa chính (ngọn lửa màu cam/đỏ).")]
         [SerializeField] ParticleSystem m_FireParticles;
-
-        [Tooltip("ParticleSystem của khói đen bốc lên.")]
         [SerializeField] ParticleSystem m_SmokeParticles;
-
-        [Tooltip("AudioClip tiếng lách tách của lửa điện.")]
         [SerializeField] AudioClip m_CracklingClip;
 
         [Header("Cài Đặt Bùng Phát")]
-        [Tooltip("Delay (giây) từ khi scene Start đến khi lửa bùng.")]
         [SerializeField] float m_IgnitionDelay = 2f;
-
-        [Tooltip("Nếu true, tự động bùng phát khi scene Start.")]
         [SerializeField] bool m_AutoIgnite = true;
 
         [Header("Cài Đặt Dập Lửa")]
-        [Tooltip("Thời gian phun CO2 liên tục để dập tắt hoàn toàn (giây).")]
         [SerializeField] public float m_ExtinguishDuration = 5f;
-
-        [Tooltip("Start size mặc định của ParticleSystem lửa khi đang cháy đầy đủ.")]
         [SerializeField] float m_MaxFireSize = 1.5f;
-
-        [Tooltip("Tốc độ phát hạt tối đa (emission rate over time) khi cháy.")]
         [SerializeField] float m_MaxEmissionRate = 50f;
 
         [Header("Collider Gốc Lửa")]
-        [Tooltip("BoxCollider đại diện cho vùng gốc lửa - cần đủ lớn cho Raycast dễ bắt trúng.")]
         [SerializeField] BoxCollider m_RootFireCollider;
 
         [Header("Tham chiếu Scenario Manager")]
         [SerializeField] FirefightingScenarioManager m_Manager;
+
+        [Header("Hiển thị Vùng Hướng Dẫn (In-Game)")]
+        [Tooltip("Bật để hiển thị vòng tròn khoảng cách trên mặt đất khi chơi.")]
+        [SerializeField] bool m_ShowZonesInGame = true;
+        [Tooltip("Độ dày của viền vòng tròn.")]
+        [SerializeField] float m_LineWidth = 0.04f;
+        [SerializeField] Color m_DangerColor = new Color(1f, 0.2f, 0f, 0.8f); // Đỏ (Quá gần)
+        [SerializeField] Color m_SafeColor = new Color(0f, 1f, 0.5f, 0.8f);   // Xanh (An toàn)
 
         [Header("Events")]
         public UnityEvent OnFireIgnited;
@@ -60,16 +49,15 @@ namespace VRPCCC.Scenario2
 
         AudioSource   m_AudioSource;
         bool          m_IsActive;
-        float         m_ExtinguishProgress; // 0 = đang cháy, 1 = đã tắt
+        float         m_ExtinguishProgress; 
         bool          m_IsExtinguished;
 
-        /// <summary>Lửa đang hoạt động.</summary>
+        // Các biến chứa LineRenderer
+        LineRenderer m_DangerZoneLine;
+        LineRenderer m_SafeZoneLine;
+
         public bool IsActive => m_IsActive;
-
-        /// <summary>Lửa đã tắt hoàn toàn.</summary>
         public bool IsExtinguished => m_IsExtinguished;
-
-        /// <summary>Tiến độ dập lửa (0–1).</summary>
         public float ExtinguishProgress => m_ExtinguishProgress;
 
         // ──────────────────────────────────────────────────────────────────── //
@@ -80,19 +68,23 @@ namespace VRPCCC.Scenario2
         {
             m_AudioSource = GetComponent<AudioSource>();
 
-            // Đảm bảo collider gốc lửa có đúng tag
             if (m_RootFireCollider != null)
             {
                 m_RootFireCollider.gameObject.tag = "Root_Fire";
                 m_RootFireCollider.isTrigger = false;
             }
 
-            // Tắt lửa ban đầu
             SetFireActive(false);
         }
 
         void Start()
         {
+            // Tự động tạo vòng tròn nếu được bật
+            if (m_ShowZonesInGame && m_Manager != null)
+            {
+                SetupZoneVisuals();
+            }
+
             if (m_AutoIgnite)
                 StartCoroutine(DelayedIgnition());
         }
@@ -101,43 +93,36 @@ namespace VRPCCC.Scenario2
         //  Public API
         // ──────────────────────────────────────────────────────────────────── //
 
-        /// <summary>Bùng phát lửa ngay lập tức.</summary>
         public void Ignite()
         {
             if (m_IsExtinguished) return;
 
             SetFireActive(true);
-            m_IsActive    = true;
+            m_IsActive = true;
+            
+            // Bật hiển thị vòng tròn khi cháy
+            SetZonesVisibility(true);
+
             m_Manager?.OnFireIgnited();
             OnFireIgnited?.Invoke();
             Debug.Log("[FireSource] 🔥 Lửa bùng phát!");
         }
 
-        /// <summary>
-        /// Áp dụng hiệu ứng dập lửa theo thời gian delta.
-        /// Gọi liên tục từ CO2Extinguisher khi đang phun.
-        /// </summary>
-        /// <param name="deltaTime">Thời gian phun trong frame này.</param>
         public void ApplyExtinguishing(float deltaTime)
         {
             if (!m_IsActive || m_IsExtinguished) return;
 
-            m_ExtinguishProgress = Mathf.Clamp01(
-                m_ExtinguishProgress + deltaTime / m_ExtinguishDuration
-            );
+            m_ExtinguishProgress = Mathf.Clamp01(m_ExtinguishProgress + deltaTime / m_ExtinguishDuration);
 
-            // Giảm kích thước và tốc độ phát hạt theo tiến độ
             float remaining = 1f - m_ExtinguishProgress;
             UpdateFireScale(remaining);
 
             m_Manager?.OnSprayProgress(m_ExtinguishProgress);
 
-            // Tắt hoàn toàn khi đạt 100%
             if (m_ExtinguishProgress >= 1f)
                 Extinguish();
         }
 
-        /// <summary>Tắt lửa hoàn toàn.</summary>
         public void Extinguish()
         {
             if (m_IsExtinguished) return;
@@ -146,12 +131,15 @@ namespace VRPCCC.Scenario2
             m_IsActive       = false;
 
             SetFireActive(false);
+            
+            // Tắt vòng tròn khi lửa đã tắt
+            SetZonesVisibility(false);
+
             m_Manager?.OnFireExtinguished();
             OnFireExtinguished?.Invoke();
             Debug.Log("[FireSource] ✅ Lửa đã tắt hoàn toàn!");
         }
 
-        /// <summary>Đặt lại đám lửa về trạng thái ban đầu.</summary>
         public void ResetFire()
         {
             m_IsExtinguished     = false;
@@ -159,13 +147,14 @@ namespace VRPCCC.Scenario2
             m_ExtinguishProgress = 0f;
             UpdateFireScale(1f);
             SetFireActive(false);
+            SetZonesVisibility(false);
 
             if (m_AutoIgnite)
                 StartCoroutine(DelayedIgnition());
         }
 
         // ──────────────────────────────────────────────────────────────────── //
-        //  Internal Helpers
+        //  Internal Helpers & Zone Visuals
         // ──────────────────────────────────────────────────────────────────── //
 
         IEnumerator DelayedIgnition()
@@ -203,14 +192,12 @@ namespace VRPCCC.Scenario2
             }
         }
 
-        /// <summary>Điều chỉnh kích thước và emission của lửa theo hệ số còn lại (0–1).</summary>
         void UpdateFireScale(float remaining)
         {
             if (m_FireParticles != null)
             {
                 var main     = m_FireParticles.main;
                 var emission = m_FireParticles.emission;
-
                 main.startSizeMultiplier       = m_MaxFireSize        * remaining;
                 emission.rateOverTimeMultiplier = m_MaxEmissionRate    * remaining;
             }
@@ -221,18 +208,66 @@ namespace VRPCCC.Scenario2
                 smokeEmission.rateOverTimeMultiplier = (m_MaxEmissionRate * 0.5f) * remaining;
             }
 
-            // Giảm âm lượng tiếng cháy
             if (m_AudioSource != null)
                 m_AudioSource.volume = Mathf.Lerp(0f, 1f, remaining);
         }
 
-        // ──────────────────────────────────────────────────────────────────── //
-        //  Gizmos
-        // ──────────────────────────────────────────────────────────────────── //
+        // --- CODE MỚI: TẠO VÀ VẼ VÒNG TRÒN TRỰC TIẾP TRONG GAME ---
+        void SetupZoneVisuals()
+        {
+            // Lấy trực tiếp khoảng cách chuẩn từ Manager để luôn đồng bộ
+            float minDistance = m_Manager.m_MinFireDistance;
+            float maxDistance = m_Manager.m_MaxFireDistance;
 
+            m_DangerZoneLine = CreateCircleLine("DangerZone_Visual", m_DangerColor, minDistance);
+            m_SafeZoneLine = CreateCircleLine("SafeZone_Visual", m_SafeColor, maxDistance);
+            
+            SetZonesVisibility(false); // Tắt lúc mới load, chỉ bật khi lửa cháy
+        }
+
+        LineRenderer CreateCircleLine(string objName, Color color, float radius)
+        {
+            GameObject go = new GameObject(objName);
+            go.transform.SetParent(this.transform);
+            go.transform.localPosition = Vector3.zero;
+
+            LineRenderer lr = go.AddComponent<LineRenderer>();
+            
+            // Sử dụng Material mặc định của Unity (hỗ trợ màu trong suốt)
+            lr.material = new Material(Shader.Find("Sprites/Default"));
+            lr.startColor = color;
+            lr.endColor = color;
+            lr.startWidth = m_LineWidth;
+            lr.endWidth = m_LineWidth;
+            lr.useWorldSpace = false;
+            lr.loop = true; // Nối điểm cuối với điểm đầu thành vòng kín
+
+            // Tính toán tọa độ để vẽ hình tròn mượt mà
+            int segments = 60;
+            lr.positionCount = segments;
+            float angle = 0f;
+            for (int i = 0; i < segments; i++)
+            {
+                float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+                float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+                // Nâng y lên 0.02f để vòng tròn không bị chìm/nhấp nháy dưới sàn nhà
+                lr.SetPosition(i, new Vector3(x, 0.02f, z)); 
+                angle += (360f / segments);
+            }
+            return lr;
+        }
+
+        void SetZonesVisibility(bool isVisible)
+        {
+            if (m_DangerZoneLine != null) m_DangerZoneLine.gameObject.SetActive(isVisible);
+            if (m_SafeZoneLine != null) m_SafeZoneLine.gameObject.SetActive(isVisible);
+        }
+
+        // ──────────────────────────────────────────────────────────────────── //
+        //  Gizmos (Giữ nguyên cho Editor)
+        // ──────────────────────────────────────────────────────────────────── //
         void OnDrawGizmos()
         {
-            // Vẽ collider gốc lửa màu đỏ trong Scene view
             if (m_RootFireCollider != null)
             {
                 Gizmos.color  = new Color(1f, 0.2f, 0f, 0.35f);
@@ -243,12 +278,14 @@ namespace VRPCCC.Scenario2
                 Gizmos.DrawWireCube(bounds.center, bounds.size);
             }
 
-            // Vẽ vòng khoảng cách an toàn
-            Gizmos.color = new Color(0f, 1f, 0.5f, 0.4f);
-            DrawCircle(transform.position, 2f, 32);
+            // Đồng bộ màu Gizmos với màu in-game
+            Gizmos.color = m_DangerColor;
+            float minDist = m_Manager != null ? m_Manager.m_MinFireDistance : 2f;
+            DrawCircle(transform.position, minDist, 32);
 
-            Gizmos.color = new Color(1f, 0.8f, 0f, 0.4f);
-            DrawCircle(transform.position, 3f, 32);
+            Gizmos.color = m_SafeColor;
+            float maxDist = m_Manager != null ? m_Manager.m_MaxFireDistance : 3f;
+            DrawCircle(transform.position, maxDist, 32);
         }
 
         static void DrawCircle(Vector3 center, float radius, int segments)

@@ -1,0 +1,8 @@
+Model Information:
+* title:	[TF2 HD] Fire extinguisher
+* source:	https://sketchfab.com/3d-models/tf2-hd-fire-extinguisher-1256e6e8db23418c99a79621d641fa26
+* author:	JotC (https://sketchfab.com/IceFredd)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
