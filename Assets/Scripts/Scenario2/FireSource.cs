@@ -16,6 +16,10 @@ namespace VRPCCC.Scenario2
         [SerializeField] ParticleSystem m_SmokeParticles;
         [SerializeField] AudioClip m_CracklingClip;
 
+        [Header("Cài Đặt Dập Lửa")]
+        [Tooltip("Bật lên nếu muốn lửa không bao giờ tắt (Dùng cho kịch bản chạy trốn).")]
+        [SerializeField] public bool m_IsInvincible = false; // <--- THÊM DÒNG NÀY
+
         [Header("Cài Đặt Bùng Phát")]
         [SerializeField] float m_IgnitionDelay = 2f;
         [SerializeField] bool m_AutoIgnite = true;
@@ -111,6 +115,15 @@ namespace VRPCCC.Scenario2
         public void ApplyExtinguishing(float deltaTime)
         {
             if (!m_IsActive || m_IsExtinguished) return;
+
+            // --- THÊM ĐOẠN NÀY ---
+            if (m_IsInvincible)
+            {
+                // Vẫn gửi tín hiệu xịt để Manager đếm ngược thời gian, nhưng KHÔNG giảm lửa
+                m_Manager?.OnSprayProgress(0f); 
+                return; // Thoát hàm ngay lập tức
+            }
+            // ---------------------
 
             m_ExtinguishProgress = Mathf.Clamp01(m_ExtinguishProgress + deltaTime / m_ExtinguishDuration);
 
@@ -212,6 +225,13 @@ namespace VRPCCC.Scenario2
                 m_AudioSource.volume = Mathf.Lerp(0f, 1f, remaining);
         }
 
+        public void EscalateFire(float multiplier)
+        {
+            m_MaxFireSize *= multiplier; //
+            m_MaxEmissionRate *= multiplier;
+            //UpdateFireScale(1.0f); // Ép cập nhật lại kích thước hạt
+        }
+        
         // --- CODE MỚI: TẠO VÀ VẼ VÒNG TRÒN TRỰC TIẾP TRONG GAME ---
         void SetupZoneVisuals()
         {

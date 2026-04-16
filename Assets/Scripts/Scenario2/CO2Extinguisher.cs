@@ -167,38 +167,46 @@ namespace VRPCCC.Scenario2
             m_DistanceCheckCooldown -= Time.deltaTime;
             m_AimWarningCooldown    -= Time.deltaTime;
 
-            // Đọc giá trị trigger từ interactor đang cầm
             float triggerValue = GetTriggerValue();
             bool  isTriggerPressed = triggerValue > 0.5f;
 
-            var state = m_Manager ? m_Manager.CurrentState : FirefightingScenarioManager.ScenarioState.Idle;
+            // --- NÂNG CẤP: CHẾ ĐỘ TỰ DO (DÀNH CHO SCENE 3) ---
+            if (m_Manager == null)
+            {
+                if (isTriggerPressed && !m_IsPinPulled)
+                {
+                    HandleLockedTrigger(); // Rung tay nhắc rút chốt
+                }
+                else if (m_IsPinPulled)
+                {
+                    HandleNozzleAim();             // Bật tia raycast nhắm gốc lửa
+                    HandleSpray(isTriggerPressed); // Bóp cò là xịt
+                }
+                else
+                {
+                    StopSpray();
+                }
+                return; // Thoát hàm, không chạy phần State Machine của Scene 2 nữa
+            }
+            // --------------------------------------------------
 
+            // Cấu trúc cũ của Scene 2
+            var state = m_Manager.CurrentState;
             switch (state)
             {
-                // ── Check 1: Khoảng cách ──────────────────────────────────
                 case FirefightingScenarioManager.ScenarioState.CheckDistance:
                     HandleDistanceCheck();
                     break;
-
-                // ── Check 2: Rút chốt + Lock khi bóp cò sớm ──────────────
                 case FirefightingScenarioManager.ScenarioState.PullPin:
-                    if (isTriggerPressed && !m_IsPinPulled)
-                        HandleLockedTrigger();
+                    if (isTriggerPressed && !m_IsPinPulled) HandleLockedTrigger();
                     break;
-
-                // ── Check 3: Hướng vòi ────────────────────────────────────
                 case FirefightingScenarioManager.ScenarioState.AimNozzle:
                     HandleNozzleAim();
-                    // Vẫn kiểm tra trigger bóp sớm
-                    if (isTriggerPressed && !m_IsPinPulled)
-                        HandleLockedTrigger();
+                    if (isTriggerPressed && !m_IsPinPulled) HandleLockedTrigger();
                     break;
-
-                // ── Check 4: Phun ─────────────────────────────────────────
                 case FirefightingScenarioManager.ScenarioState.Spraying:
                     HandleSpray(isTriggerPressed);
                     break;
-
                 default:
                     StopSpray();
                     break;

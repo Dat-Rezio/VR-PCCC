@@ -118,21 +118,39 @@ namespace VRPCCC.Scenario2
             float triggerValue = GetTriggerValue();
             bool  isTriggerPressed = triggerValue > 0.5f;
 
-            var state = m_Manager ? m_Manager.CurrentState : FirefightingScenarioManager.ScenarioState.Idle;
+            // --- NÂNG CẤP: CHẾ ĐỘ TỰ DO (DÀNH CHO SCENE 3) ---
+            if (m_Manager == null)
+            {
+                if (isTriggerPressed && !m_IsPinPulled)
+                {
+                    HandleLockedTrigger(); // Rung tay nhắc rút chốt
+                }
+                else if (m_IsPinPulled)
+                {
+                    HandleNozzleAim();             // Bật tia raycast nhắm gốc lửa
+                    HandleSpray(isTriggerPressed); // Bóp cò là xịt
+                }
+                else
+                {
+                    StopSpray();
+                }
+                return; // Thoát hàm, không chạy phần State Machine của Scene 2 nữa
+            }
+            // --------------------------------------------------
 
+            // Cấu trúc cũ của Scene 2
+            var state = m_Manager.CurrentState;
             switch (state)
             {
                 case FirefightingScenarioManager.ScenarioState.CheckDistance:
                     HandleDistanceCheck();
                     break;
                 case FirefightingScenarioManager.ScenarioState.PullPin:
-                    if (isTriggerPressed && !m_IsPinPulled)
-                        HandleLockedTrigger();
+                    if (isTriggerPressed && !m_IsPinPulled) HandleLockedTrigger();
                     break;
                 case FirefightingScenarioManager.ScenarioState.AimNozzle:
                     HandleNozzleAim();
-                    if (isTriggerPressed && !m_IsPinPulled)
-                        HandleLockedTrigger();
+                    if (isTriggerPressed && !m_IsPinPulled) HandleLockedTrigger();
                     break;
                 case FirefightingScenarioManager.ScenarioState.Spraying:
                     HandleSpray(isTriggerPressed);

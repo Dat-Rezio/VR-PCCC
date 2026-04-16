@@ -28,6 +28,12 @@ namespace VRPCCC.Scenario2
         [SerializeField] TextMeshProUGUI m_ScoreText;
         [SerializeField] TextMeshProUGUI m_LegalNoteText;
 
+        // --- THÊM CÁC BIẾN NÀY ĐỂ TÙY CHỈNH TRÊN UNITY EDITOR ---
+        [Header("Nội dung Kết thúc (Tùy chỉnh)")]
+        [SerializeField] string m_SuccessTitle = "THÀNH CÔNG!";
+        [SerializeField] string m_FailedTitle = "CHƯA HOÀN THÀNH";
+        [SerializeField] string m_ScorePrefix = "Điểm số: ";
+
         [Header("Bộ Đếm Tiến Độ")]
         [SerializeField] UnityEngine.UI.Slider m_ExtinguishProgressBar;
 
@@ -115,7 +121,8 @@ namespace VRPCCC.Scenario2
             if (m_EndPanel != null) m_EndPanel.SetActive(true);
             if (m_EndTitleText != null)
             {
-                m_EndTitleText.text = "Bạn đã hoàn thành kịch bản!\nBình bột ABC sẽ đa năng hơn trong nhiều trường hợp, nhưng dễ gây hỏng thiết bị điện tử.\nBình CO2 sẽ phù hợp hơn với các đám cháy liên quan đến điện, nhưng có thể gây bỏng lạnh khi không sử dụng đúng cách, và không phù hợp với đám cháy ngoài trời.";
+                // SỬA TẠI ĐÂY: Dùng biến thay vì chữ fix cứng
+                m_EndTitleText.text  = m_SuccessTitle; 
                 //m_EndTitleText.color = Color.green;
             }
             if (m_ScoreText != null) m_ScoreText.text = $"Điểm số: <b>{score}</b> / 100";
@@ -127,7 +134,8 @@ namespace VRPCCC.Scenario2
             if (m_EndPanel != null) m_EndPanel.SetActive(true);
             if (m_EndTitleText != null)
             {
-                m_EndTitleText.text = "❌ CHƯA HOÀN THÀNH";
+                // SỬA TẠI ĐÂY: Dùng biến thay vì chữ fix cứng
+                m_EndTitleText.text  = m_FailedTitle;
                 m_EndTitleText.color = Color.red;
             }
         }
