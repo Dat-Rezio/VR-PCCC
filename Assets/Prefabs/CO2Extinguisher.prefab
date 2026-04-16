@@ -564,7 +564,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -608,7 +608,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_PinObject: {fileID: 488218653022443957}
   m_CO2SprayVFX: {fileID: 5934677093900722396}
   m_SprayAudio: {fileID: 1452482753287303226}
-  m_CO2HissingClip: {fileID: 0}
+  m_CO2HissingClip: {fileID: 8300000, guid: dec6433fff770e54391ceb6def0b8470, type: 3}
   m_MinFireDistance: 2
   m_MaxFireDistance: 3
   m_LockHapticAmplitude: 0.8

@@ -229,7 +229,7 @@ namespace VRPCCC.Scenario2
         {
             m_MaxFireSize *= multiplier; //
             m_MaxEmissionRate *= multiplier;
-            //UpdateFireScale(1.0f); // Ép cập nhật lại kích thước hạt
+            UpdateFireScale(1.1f); // Ép cập nhật lại kích thước hạt
         }
         
         // --- CODE MỚI: TẠO VÀ VẼ VÒNG TRÒN TRỰC TIẾP TRONG GAME ---

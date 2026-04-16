@@ -5343,7 +5343,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409250070}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
   m_Name: 
@@ -5426,6 +5426,67 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &470442906
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1529613615631261522, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: xrOrigin
+      value: 
+      objectReference: {fileID: 1972802619}
+    - target: {fileID: 5509568454553183180, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_Name
+      value: FirstSpawnLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.301
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.329
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.19940051
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9799181
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -203.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169164641593333126, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 437873023fad16d4fbd4ad260e902dbe, type: 3}
 --- !u!1 &521359481
 GameObject:
   m_ObjectHideFlags: 0
@@ -7701,7 +7762,7 @@ MonoBehaviour:
   m_PinObject: {fileID: 1174389057}
   m_ABCSprayVFX: {fileID: 1920156325}
   m_SprayAudio: {fileID: 836502967}
-  m_ABCHissingClip: {fileID: 0}
+  m_ABCHissingClip: {fileID: 8300000, guid: dec6433fff770e54391ceb6def0b8470, type: 3}
   m_MinFireDistance: 2
   m_MaxFireDistance: 3
   m_LockHapticAmplitude: 0.8
@@ -7980,9 +8041,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: dec6433fff770e54391ceb6def0b8470, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8026,7 +8087,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9102,7 +9163,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1325285982}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1985626686}
+        m_TargetAssemblyTypeName: VRPCCC.Core.SceneTransitionManager, Assembly-CSharp
+        m_MethodName: LoadSceneByName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Scenario3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1325285982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15258,6 +15331,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930240338}
   m_CullTransparentMesh: 1
+--- !u!114 &1972802619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7024446795238663939, guid: aa29a753aa8f898468c7992458aeb3a0, type: 3}
+  m_PrefabInstance: {fileID: 765381239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1985626682
 GameObject:
   m_ObjectHideFlags: 0
@@ -15269,6 +15353,7 @@ GameObject:
   - component: {fileID: 1985626684}
   - component: {fileID: 1985626683}
   - component: {fileID: 1985626685}
+  - component: {fileID: 1985626686}
   m_Layer: 0
   m_Name: ScenarioManager
   m_TagString: Untagged
@@ -15377,6 +15462,19 @@ MonoBehaviour:
   m_ScorePrefix: "\u0110i\u1EC3m s\u1ED1: "
   m_ExtinguishProgressBar: {fileID: 0}
   m_WarningColor: {r: 1, g: 0.4, b: 0, a: 1}
+--- !u!114 &1985626686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985626682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff48cc4c3200534e944b07b0e4abfdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Core.SceneTransitionManager
+  delayTime: 1
 --- !u!1 &2008938816
 GameObject:
   m_ObjectHideFlags: 0
@@ -20550,6 +20648,10 @@ PrefabInstance:
       propertyPath: m_Manager
       value: 
       objectReference: {fileID: 1985626683}
+    - target: {fileID: 4461302810242676821, guid: 086d063ad498e794c802df13bdba3922, type: 3}
+      propertyPath: m_ShowZonesInGame
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20575,6 +20677,10 @@ PrefabInstance:
       propertyPath: m_FireSource
       value: 
       objectReference: {fileID: 1241011920}
+    - target: {fileID: 58960327852279447, guid: a25e2fd309755fa498003337609a906d, type: 3}
+      propertyPath: m_CO2HissingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dec6433fff770e54391ceb6def0b8470, type: 3}
     - target: {fileID: 3878836177832848975, guid: a25e2fd309755fa498003337609a906d, type: 3}
       propertyPath: m_Name
       value: CO2Extinguisher
@@ -20639,3 +20745,4 @@ SceneRoots:
   - {fileID: 1643533599}
   - {fileID: 824301561}
   - {fileID: 93855779}
+  - {fileID: 470442906}
