@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using Unity.Tutorials.Core.Editor;
 
-
 public class DoorSafetySimulation : MonoBehaviour
 {
     [Header("Cấu hình Giả lập")]
@@ -19,8 +18,14 @@ public class DoorSafetySimulation : MonoBehaviour
     public TextMeshProUGUI statusText;
     public TextMeshProUGUI timerText; // (Tùy chọn) Hiển thị giây còn lại để đổi trạng thái
 
+    [Header("Cấu hình Âm thanh")]
+    public AudioSource audioSource;
+    public AudioClip openDoorSound;   // Tiếng mở cửa thành công
+    public AudioClip lockedSound;     // Tiếng cảnh báo/cửa khóa khi đang NÓNG (Tùy chọn)
+
     [Header("Kết nối với Tutorial Manager")]
     public VRPCCC.UI.TutorialManager tutorialManager; // Kéo object chứa TutorialManager vào đây
+    
     private void Start()
     {
         if (temperaturePanel != null) temperaturePanel.SetActive(false);
@@ -55,8 +60,16 @@ public class DoorSafetySimulation : MonoBehaviour
     {
         if (!isHot)
         {
+            // 1. Phát âm thanh mở cửa
+            if (audioSource != null && openDoorSound != null)
+            {
+                audioSource.PlayOneShot(openDoorSound);
+            }
+
+            // 2. Dịch chuyển
             ExecuteTeleport();
-            // MỞ KHÓA HƯỚNG DẪN KHI ĐÃ CHẠM VÀO CỬA
+            
+            // 3. MỞ KHÓA HƯỚNG DẪN KHI ĐÃ CHẠM VÀO CỬA
             if (tutorialManager != null)
             {
                 tutorialManager.CompleteAction("OpenDoor");
@@ -65,7 +78,12 @@ public class DoorSafetySimulation : MonoBehaviour
         else
         {
             Debug.Log("Cửa đang nóng, không thể mở để dịch chuyển!");
-            // Có thể thêm hiệu ứng âm thanh cảnh báo ở đây
+            
+            // Phát âm thanh báo lỗi/cửa khóa (nếu có)
+            if (audioSource != null && lockedSound != null)
+            {
+                audioSource.PlayOneShot(lockedSound);
+            }
         }
     }
 

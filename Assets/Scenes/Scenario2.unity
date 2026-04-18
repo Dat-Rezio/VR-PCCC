@@ -5332,7 +5332,7 @@ MonoBehaviour:
   m_MinDistanceAllowed: 0.5
   m_MaxDistanceAllowed: 1
   m_TimeUntilThresholdReachesMaxDistance: 3
-  m_RotationFollowMode: 1
+  m_RotationFollowMode: 2
   m_MinAngleAllowed: 0.1
   m_MaxAngleAllowed: 5
   m_TimeUntilThresholdReachesMaxAngle: 3
