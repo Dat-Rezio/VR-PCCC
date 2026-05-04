@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "VR PCCC.slnx"
+    "dotnet.defaultSolution": "VR-PCCC.slnx"
 }
