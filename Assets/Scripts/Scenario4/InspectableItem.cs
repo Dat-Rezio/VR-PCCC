@@ -51,11 +51,19 @@ namespace VRPCCC.Scenario4
         [SerializeField] int m_PointsWrong = 5;
 
         [Header("Icon Hiển Thị Tại Chỗ")]
-        [Tooltip("Icon ✅ (3D object, ẩn ban đầu). Hiện khi chọn ĐÚNG nguy cơ.")]
+        [Tooltip("Icon ✅. Kéo Prefab vào đây. Code sẽ tự sinh ra bên trong vùng Collider.")]
         [SerializeField] GameObject m_CorrectIcon;
 
-        [Tooltip("Icon ❌ (3D object, ẩn ban đầu). Hiện khi chọn SAI (vật an toàn) hoặc chọn nhầm.")]
+        [Tooltip("Icon ❌. Kéo Prefab vào đây. Code sẽ tự sinh ra bên trong vùng Collider.")]
         [SerializeField] GameObject m_WrongIcon;
+
+        [Header("Cài Đặt Vị Trí Icon")]
+        [Tooltip("Nếu tích, icon sinh ra trên ĐỈNH collider. Nếu bỏ tích, sinh ra ngay GIỮA collider.")]
+        [SerializeField] bool m_SpawnAtTop = true;
+        [Tooltip("Chỉnh lệch lên/xuống một chút so với điểm tự động tính.")]
+        [SerializeField] float m_YOffset = 0.2f;
+        [Tooltip("Làm icon luôn xoay mặt về phía người chơi?")]
+        [SerializeField] bool m_AlwaysFacePlayer = true;
 
         [Header("Tham Chiếu")]
         [Tooltip("Kéo InspectionScenarioManager vào đây.")]
@@ -80,6 +88,8 @@ namespace VRPCCC.Scenario4
         // ──────────────────────────────────────────────────────────────────── //
 
         bool m_IsSelected = false;
+        GameObject m_ActiveIconInstance; // Lưu icon đang hiển thị
+        Transform m_MainCamera;
 
         /// <summary>Vật thể này đã được chọn chưa.</summary>
         public bool IsSelected => m_IsSelected;
@@ -94,9 +104,27 @@ namespace VRPCCC.Scenario4
 
         void Start()
         {
-            // Ẩn cả 2 icon ban đầu
-            if (m_CorrectIcon != null) m_CorrectIcon.SetActive(false);
-            if (m_WrongIcon != null) m_WrongIcon.SetActive(false);
+            // Nếu icon là object có sẵn trong scene thì ẩn nó đi
+            if (m_CorrectIcon != null && m_CorrectIcon.scene.IsValid()) 
+                m_CorrectIcon.SetActive(false);
+                
+            if (m_WrongIcon != null && m_WrongIcon.scene.IsValid()) 
+                m_WrongIcon.SetActive(false);
+
+            if (Camera.main != null)
+                m_MainCamera = Camera.main.transform;
+        }
+
+        void Update()
+        {
+            // Làm icon luôn quay về camera
+            if (m_IsSelected && m_AlwaysFacePlayer && m_ActiveIconInstance != null && m_MainCamera != null)
+            {
+                m_ActiveIconInstance.transform.LookAt(
+                    m_ActiveIconInstance.transform.position + m_MainCamera.rotation * Vector3.forward,
+                    m_MainCamera.rotation * Vector3.up
+                );
+            }
         }
 
         // ──────────────────────────────────────────────────────────────────── //
@@ -116,8 +144,7 @@ namespace VRPCCC.Scenario4
             if (m_IsHazard)
             {
                 // ═══ CHỌN ĐÚNG — Đây là nguy cơ ═══
-                if (m_CorrectIcon != null)
-                    m_CorrectIcon.SetActive(true);
+                m_ActiveIconInstance = ShowIcon(m_CorrectIcon);
 
                 // Phát âm thanh đúng
                 PlaySound(m_CorrectSound);
@@ -131,8 +158,7 @@ namespace VRPCCC.Scenario4
             else
             {
                 // ═══ CHỌN SAI — Đây là vật an toàn ═══
-                if (m_WrongIcon != null)
-                    m_WrongIcon.SetActive(true);
+                m_ActiveIconInstance = ShowIcon(m_WrongIcon);
 
                 // Phát âm thanh sai
                 PlaySound(m_WrongSound);
@@ -156,8 +182,21 @@ namespace VRPCCC.Scenario4
         public void ResetItem()
         {
             m_IsSelected = false;
-            if (m_CorrectIcon != null) m_CorrectIcon.SetActive(false);
-            if (m_WrongIcon != null) m_WrongIcon.SetActive(false);
+            
+            // Xóa/ẩn icon
+            if (m_ActiveIconInstance != null)
+            {
+                if (m_ActiveIconInstance.scene.IsValid() && m_ActiveIconInstance != m_CorrectIcon && m_ActiveIconInstance != m_WrongIcon)
+                {
+                    Destroy(m_ActiveIconInstance); // Xóa bản sao
+                }
+                else
+                {
+                    m_ActiveIconInstance.SetActive(false); // Ẩn bản gốc
+                }
+                m_ActiveIconInstance = null;
+            }
+
             if (m_HighlightEffect != null) m_HighlightEffect.SetActive(true);
         }
 
@@ -176,6 +215,47 @@ namespace VRPCCC.Scenario4
             else
             {
                 AudioSource.PlayClipAtPoint(clip, transform.position);
+            }
+        }
+
+        GameObject ShowIcon(GameObject iconRef)
+        {
+            if (iconRef == null) return null;
+
+            if (iconRef.scene.IsValid())
+            {
+                // Nếu là Object có sẵn trong Scene -> Bật lên
+                iconRef.SetActive(true);
+                return iconRef;
+            }
+            else
+            {
+                // Nếu là Prefab -> Tính vị trí dựa vào Collider
+                Vector3 spawnPos = transform.position; // Dự phòng
+                Collider col = GetComponent<Collider>();
+                
+                if (col != null)
+                {
+                    if (m_SpawnAtTop)
+                    {
+                        // Đặt ở trên đỉnh
+                        spawnPos = col.bounds.center;
+                        spawnPos.y = col.bounds.max.y;
+                    }
+                    else
+                    {
+                        // Đặt ngay chính giữa
+                        spawnPos = col.bounds.center;
+                    }
+                }
+
+                // Cộng thêm bù trừ Y
+                spawnPos.y += m_YOffset;
+
+                // Sinh ra bản sao
+                GameObject spawned = Instantiate(iconRef, spawnPos, Quaternion.identity, transform);
+                spawned.SetActive(true);
+                return spawned;
             }
         }
 
