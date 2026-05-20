@@ -119,6 +119,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &34940535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
+--- !u!114 &91231187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &111303647
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +509,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &246651635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!65 &248414944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -691,6 +736,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250296816}
   m_CullTransparentMesh: 1
+--- !u!114 &269749552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &289210191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,6 +1737,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &829413517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &847652354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2524,6 +2599,21 @@ MonoBehaviour:
   OnItemSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &969209282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &971973235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3277,6 +3367,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a3b9240f715da144981b80aaa0b06e4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1214455264}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a3b9240f715da144981b80aaa0b06e4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1214455268}
   m_SourcePrefab: {fileID: 100100000, guid: a3b9240f715da144981b80aaa0b06e4b, type: 3}
 --- !u!1 &1214455263 stripped
 GameObject:
@@ -3421,6 +3514,21 @@ MonoBehaviour:
   OnItemSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1214455268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214455263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &1225369364
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3619,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225369364}
   m_CullTransparentMesh: 1
+--- !u!114 &1236433571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
+--- !u!114 &1252596467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &1294850037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4052,6 +4190,7 @@ GameObject:
   - component: {fileID: 1436940538}
   - component: {fileID: 1436940540}
   - component: {fileID: 1436940539}
+  - component: {fileID: 1436940541}
   m_Layer: 0
   m_Name: Daisy-chain Tip
   m_TagString: Untagged
@@ -4214,6 +4353,21 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AutoFindParentInteractableInHierarchy: 0
   m_ParentInteractableObject: {fileID: 0}
+--- !u!114 &1436940541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436940536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &1443158008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4351,6 +4505,21 @@ MonoBehaviour:
   OnItemSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1456561393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &1460300212
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,6 +4597,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460300212}
   m_CullTransparentMesh: 1
+--- !u!114 &1464266604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &1474303856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4681,6 +4865,21 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AutoFindParentInteractableInHierarchy: 0
   m_ParentInteractableObject: {fileID: 0}
+--- !u!114 &1503328965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &1523629583
 GameObject:
   m_ObjectHideFlags: 0
@@ -4894,6 +5093,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2103409106938638286, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1548707627}
+    - targetCorrespondingSourceObject: {fileID: 2103409106938638286, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1548707633}
     - targetCorrespondingSourceObject: {fileID: 7352847157029748796, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1530127684}
@@ -4903,6 +5105,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7352847157029748796, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1530127682}
+    - targetCorrespondingSourceObject: {fileID: 7352847157029748796, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1530127691}
     - targetCorrespondingSourceObject: {fileID: -913049882230099859, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 847652356}
@@ -4912,12 +5117,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -913049882230099859, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 847652354}
+    - targetCorrespondingSourceObject: {fileID: -913049882230099859, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 829413517}
     - targetCorrespondingSourceObject: {fileID: 4993447691076167634, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2063765239}
     - targetCorrespondingSourceObject: {fileID: 4993447691076167634, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2063765238}
+    - targetCorrespondingSourceObject: {fileID: 4993447691076167634, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2063765243}
     - targetCorrespondingSourceObject: {fileID: -7865521286462283592, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1530127681}
@@ -4927,12 +5138,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7865521286462283592, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1530127679}
+    - targetCorrespondingSourceObject: {fileID: -7865521286462283592, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1530127688}
     - targetCorrespondingSourceObject: {fileID: 1134961754006154594, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1474303858}
     - targetCorrespondingSourceObject: {fileID: 1134961754006154594, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1474303856}
+    - targetCorrespondingSourceObject: {fileID: 1134961754006154594, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 91231187}
     - targetCorrespondingSourceObject: {fileID: 1193666084292947176, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1474770955}
@@ -4942,6 +5159,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1193666084292947176, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1474770953}
+    - targetCorrespondingSourceObject: {fileID: 1193666084292947176, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1503328965}
     - targetCorrespondingSourceObject: {fileID: 7429837407273640243, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 966662784}
@@ -4951,6 +5171,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7429837407273640243, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 966662782}
+    - targetCorrespondingSourceObject: {fileID: 7429837407273640243, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2033573445}
     - targetCorrespondingSourceObject: {fileID: -4795569626841430796, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 937653689}
@@ -4960,6 +5183,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4795569626841430796, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 937653687}
+    - targetCorrespondingSourceObject: {fileID: -4795569626841430796, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1648429888}
     - targetCorrespondingSourceObject: {fileID: 7159551697990523242, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 340953785}
@@ -4969,6 +5195,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7159551697990523242, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 340953783}
+    - targetCorrespondingSourceObject: {fileID: 7159551697990523242, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1964133873}
     - targetCorrespondingSourceObject: {fileID: -4794536094980071532, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1853883128}
@@ -4978,6 +5207,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4794536094980071532, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1853883126}
+    - targetCorrespondingSourceObject: {fileID: -4794536094980071532, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1853883132}
     - targetCorrespondingSourceObject: {fileID: 6025263999009772818, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1030124225}
@@ -4993,6 +5225,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8767607580411580311, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1294850037}
+    - targetCorrespondingSourceObject: {fileID: -8767607580411580311, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1541803464}
     - targetCorrespondingSourceObject: {fileID: -383896833268130603, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1346723246}
@@ -5002,6 +5237,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -383896833268130603, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1346723244}
+    - targetCorrespondingSourceObject: {fileID: -383896833268130603, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1806430208}
     - targetCorrespondingSourceObject: {fileID: 6319483231747581810, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1894017593}
@@ -5017,6 +5255,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4273522389243860790, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1443158008}
+    - targetCorrespondingSourceObject: {fileID: 4273522389243860790, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1456561393}
     - targetCorrespondingSourceObject: {fileID: -5385312269291673265, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1540937126}
@@ -5026,6 +5267,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5385312269291673265, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1540937124}
+    - targetCorrespondingSourceObject: {fileID: -5385312269291673265, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1540937130}
     - targetCorrespondingSourceObject: {fileID: 1442510827827848880, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 578830401}
@@ -5035,6 +5279,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1442510827827848880, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 578830399}
+    - targetCorrespondingSourceObject: {fileID: 1442510827827848880, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1252596467}
     - targetCorrespondingSourceObject: {fileID: -4647163110676703281, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1791594992}
@@ -5044,6 +5291,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4647163110676703281, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1791594990}
+    - targetCorrespondingSourceObject: {fileID: -4647163110676703281, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1791594996}
     - targetCorrespondingSourceObject: {fileID: 5966648769487066363, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 945205489}
@@ -5053,6 +5303,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5966648769487066363, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 945205487}
+    - targetCorrespondingSourceObject: {fileID: 5966648769487066363, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 269749552}
     - targetCorrespondingSourceObject: {fileID: -5998581509011802742, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1323755773}
@@ -5062,6 +5315,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5998581509011802742, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1323755771}
+    - targetCorrespondingSourceObject: {fileID: -5998581509011802742, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1892266442}
     - targetCorrespondingSourceObject: {fileID: 3096178801330721287, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 867132871}
@@ -5071,6 +5327,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3096178801330721287, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 867132869}
+    - targetCorrespondingSourceObject: {fileID: 3096178801330721287, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1648348028}
     - targetCorrespondingSourceObject: {fileID: -1796300075975732546, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1091730418}
@@ -5080,6 +5339,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -1796300075975732546, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1091730416}
+    - targetCorrespondingSourceObject: {fileID: -1796300075975732546, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1792792899}
     - targetCorrespondingSourceObject: {fileID: 3310998681766927516, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 289210193}
@@ -5089,6 +5351,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3310998681766927516, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 289210191}
+    - targetCorrespondingSourceObject: {fileID: 3310998681766927516, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1236433571}
     - targetCorrespondingSourceObject: {fileID: -1339263456316138240, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 558600166}
@@ -5098,6 +5363,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -1339263456316138240, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 558600164}
+    - targetCorrespondingSourceObject: {fileID: -1339263456316138240, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1464266604}
     - targetCorrespondingSourceObject: {fileID: -360525728827389339, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2063677920}
@@ -5107,6 +5375,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -360525728827389339, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2063677918}
+    - targetCorrespondingSourceObject: {fileID: -360525728827389339, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2063677924}
     - targetCorrespondingSourceObject: {fileID: 7752644913834403830, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 993880178}
@@ -5116,6 +5387,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7752644913834403830, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 993880176}
+    - targetCorrespondingSourceObject: {fileID: 7752644913834403830, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1843795574}
     - targetCorrespondingSourceObject: {fileID: 2561834980578688327, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1092500274}
@@ -5125,6 +5399,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2561834980578688327, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1155289749}
+    - targetCorrespondingSourceObject: {fileID: 2561834980578688327, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 246651635}
     - targetCorrespondingSourceObject: {fileID: 3872420740015881929, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 597635573}
@@ -5134,6 +5411,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3872420740015881929, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 597635571}
+    - targetCorrespondingSourceObject: {fileID: 3872420740015881929, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1692512303}
     - targetCorrespondingSourceObject: {fileID: -7426884212999061983, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 971973237}
@@ -5143,6 +5423,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7426884212999061983, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 971973235}
+    - targetCorrespondingSourceObject: {fileID: -7426884212999061983, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 34940535}
     - targetCorrespondingSourceObject: {fileID: 2313580995474314375, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 248414946}
@@ -5152,6 +5435,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2313580995474314375, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 248414944}
+    - targetCorrespondingSourceObject: {fileID: 2313580995474314375, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 969209282}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
 --- !u!1 &1530127648 stripped
 GameObject:
@@ -5582,6 +5868,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 120.91917, y: 2.7493816e-11, z: 120.02576}
   m_Center: {x: 138.1487, y: 91.86953, z: 78.1963}
+--- !u!114 &1530127688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
+--- !u!114 &1530127691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!65 &1540937124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5719,6 +6035,36 @@ MonoBehaviour:
   OnItemSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1540937130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
+--- !u!114 &1541803464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &1547002486
 GameObject:
   m_ObjectHideFlags: 0
@@ -5971,6 +6317,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7341600081719177704, guid: 84521039448b4154dadd1825bb2b433a, type: 3}
   m_PrefabInstance: {fileID: 1530127647}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1548707633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &1618466033
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,6 +6407,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618466033}
   m_CullTransparentMesh: 1
+--- !u!114 &1648348028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
+--- !u!114 &1648429888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
+--- !u!114 &1692512303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &1728463940
 GameObject:
   m_ObjectHideFlags: 0
@@ -6325,6 +6731,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 83.22896, y: 256.7068, z: 546.5194}
   m_Center: {x: -178.42331, y: 130.7454, z: 256.89215}
+--- !u!114 &1791594996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
+--- !u!114 &1792792899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &1794730471
 GameObject:
   m_ObjectHideFlags: 0
@@ -6361,6 +6797,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1806430208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1001 &1821049211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6551,6 +7002,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.050143804, y: 0.06683794, z: 0.095646836}
   m_Center: {x: -0.00006225292, y: -0.030037478, z: -0.0683577}
+--- !u!114 &1843795574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &1853883126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6688,6 +7154,21 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AutoFindParentInteractableInHierarchy: 0
   m_ParentInteractableObject: {fileID: 0}
+--- !u!114 &1853883132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1001 &1887143551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6754,6 +7235,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: 860fc02044756dd4fa23f63f8cca9459, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1887143553}
+    - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: 860fc02044756dd4fa23f63f8cca9459, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1887143557}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 860fc02044756dd4fa23f63f8cca9459, type: 3}
 --- !u!1 &1887143552 stripped
 GameObject:
@@ -6898,6 +7382,36 @@ MonoBehaviour:
   OnItemSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1887143557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887143552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
+--- !u!114 &1892266442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &1894017591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7014,6 +7528,21 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AutoFindParentInteractableInHierarchy: 0
   m_ParentInteractableObject: {fileID: 0}
+--- !u!114 &1964133873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1001 &2006374565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7091,6 +7620,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fae4403e67a60fd4b8571a4889e63033, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2006374567}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fae4403e67a60fd4b8571a4889e63033, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2006374571}
   m_SourcePrefab: {fileID: 100100000, guid: fae4403e67a60fd4b8571a4889e63033, type: 3}
 --- !u!1 &2006374566 stripped
 GameObject:
@@ -7235,6 +7767,21 @@ MonoBehaviour:
   OnItemSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2006374571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006374566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1001 &2030538248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7309,6 +7856,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 797741cd8614ccc438fb100bb8e77aaa, type: 3}
   m_PrefabInstance: {fileID: 2030538248}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2033573445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &2036977645
 GameObject:
   m_ObjectHideFlags: 0
@@ -7522,6 +8084,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 234.04724, y: 99.48282, z: 153.2185}
   m_Center: {x: -93.02014, y: 52.173767, z: -119.80009}
+--- !u!114 &2063677924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!114 &2063765238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7638,6 +8215,21 @@ MonoBehaviour:
   OnItemSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2063765243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530127675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0665aceb2e9330f4aa83a2ca972016bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
+  m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  m_OutlineThickness: 0.01
+  m_IncludeChildBoxColliders: 1
 --- !u!1 &2111633107
 GameObject:
   m_ObjectHideFlags: 0
