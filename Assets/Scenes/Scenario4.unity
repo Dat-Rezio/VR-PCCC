@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &91231187
 MonoBehaviour:
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &111303647
 GameObject:
@@ -356,6 +358,12 @@ MonoBehaviour:
   m_EndPanel: {fileID: 1460300212}
   m_ScoreText: {fileID: 1728463943}
   m_ExplanationText: {fileID: 177065838}
+  m_NextExplanationButton: {fileID: 1911764274}
+  m_NextExplanationButtonLabel: {fileID: 1703224169}
+  m_EndScoreFontSize: 40
+  m_EndExplanationFontSize: 30
+  m_EndExplanationMinFontSize: 22
+  m_EndPanelSize: {x: 650, y: 450}
 --- !u!4 &177020366
 Transform:
   m_ObjectHideFlags: 0
@@ -364,14 +372,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177020364}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9937625, z: -0, w: -0.11151722}
-  m_LocalPosition: {x: 262.12952, y: -151.08, z: 62.400513}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.0019752646, y: -0.990658, z: 0.10762248, w: 0.08372749}
+  m_LocalPosition: {x: 244.446, y: -139.833, z: -8.709}
+  m_LocalScale: {x: 0.91161, y: 0.91161, z: 0.91161}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2111633108}
   m_Father: {fileID: 1744519691}
-  m_LocalEulerAnglesHint: {x: 0, y: 167.194, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.293, y: 189.8, z: 1.286}
 --- !u!1 &177065837
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +445,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
+  m_fontSize: 44.75
   m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -523,6 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!65 &248414944
 BoxCollider:
@@ -693,8 +702,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1794730472}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.00004786174}
-  m_AnchorMax: {x: 1, y: 0.610048}
+  m_AnchorMin: {x: 0, y: 0.00005900062}
+  m_AnchorMax: {x: 1, y: 0.6100582}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -750,6 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &289210191
 MonoBehaviour:
@@ -1108,7 +1118,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1618466034}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99991035
+  m_Size: 0.9999836
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1183,7 +1193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.09462885, y: 116.987564}
+  m_AnchoredPosition: {x: 0.014504968, y: 116.98755}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &417774773
@@ -1751,6 +1761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &847652354
 MonoBehaviour:
@@ -2108,8 +2119,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 250296818}
   m_HandleRect: {fileID: 250296817}
   m_Direction: 2
-  m_Value: 0.00012272246
-  m_Size: 0.61000013
+  m_Value: 0.00015128356
+  m_Size: 0.6099998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2613,6 +2624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &971973235
 MonoBehaviour:
@@ -3528,6 +3540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &1225369364
 GameObject:
@@ -3633,6 +3646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1252596467
 MonoBehaviour:
@@ -3648,6 +3662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1294850037
 MonoBehaviour:
@@ -4367,6 +4382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1443158008
 MonoBehaviour:
@@ -4519,6 +4535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &1460300212
 GameObject:
@@ -4552,6 +4569,7 @@ RectTransform:
   m_Children:
   - {fileID: 1728463941}
   - {fileID: 1547002487}
+  - {fileID: 1911764271}
   m_Father: {fileID: 2111633108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4611,6 +4629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1474303856
 MonoBehaviour:
@@ -4879,6 +4898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &1523629583
 GameObject:
@@ -5882,6 +5902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1530127691
 MonoBehaviour:
@@ -5897,6 +5918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!65 &1540937124
 BoxCollider:
@@ -6049,6 +6071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1541803464
 MonoBehaviour:
@@ -6064,6 +6087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &1547002486
 GameObject:
@@ -6092,8 +6116,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547002486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.015798}
+  m_LocalScale: {x: 3.99527, y: 2.2021, z: 2.2021}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1225369365}
@@ -6104,7 +6128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.045397, y: -22}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1547002488
@@ -6331,6 +6355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &1618466033
 GameObject:
@@ -6364,7 +6389,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 923026871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.000089645386, y: 0}
+  m_AnchorMin: {x: 0.000016391277, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -6421,6 +6446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1648429888
 MonoBehaviour:
@@ -6436,6 +6462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1692512303
 MonoBehaviour:
@@ -6451,7 +6478,145 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
+--- !u!1 &1703224168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1703224171}
+  - component: {fileID: 1703224170}
+  - component: {fileID: 1703224169}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1703224169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703224168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Ti\u1EBFp"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1703224170
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703224168}
+  m_CullTransparentMesh: 1
+--- !u!224 &1703224171
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703224168}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1911764271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1728463940
 GameObject:
   m_ObjectHideFlags: 0
@@ -6486,7 +6651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 257}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1728463942
@@ -6544,7 +6709,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
+  m_fontSize: 44.75
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6745,6 +6910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1792792899
 MonoBehaviour:
@@ -6760,6 +6926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &1794730471
 GameObject:
@@ -6811,6 +6978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1001 &1821049211
 PrefabInstance:
@@ -7016,6 +7184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1853883126
 MonoBehaviour:
@@ -7168,6 +7337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1001 &1887143551
 PrefabInstance:
@@ -7396,6 +7566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1892266442
 MonoBehaviour:
@@ -7411,6 +7582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &1894017591
 MonoBehaviour:
@@ -7528,6 +7700,236 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AutoFindParentInteractableInHierarchy: 0
   m_ParentInteractableObject: {fileID: 0}
+--- !u!1 &1911764270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1911764271}
+  - component: {fileID: 1911764273}
+  - component: {fileID: 1911764272}
+  - component: {fileID: 1911764274}
+  - component: {fileID: 1911764275}
+  - component: {fileID: 1911764276}
+  m_Layer: 0
+  m_Name: ButtonNext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1911764271
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911764270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1703224171}
+  m_Father: {fileID: 1460300213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -263}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1911764272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911764270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1911764273
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911764270}
+  m_CullTransparentMesh: 1
+--- !u!114 &1911764274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911764270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1911764272}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &1911764275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911764270}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 160, y: 30, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1911764276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911764270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 177020365}
+        m_TargetAssemblyTypeName: VRPCCC.Scenario4.InspectionHUD, Assembly-CSharp
+        m_MethodName: ShowNextExplanation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_AutoFindParentInteractableInHierarchy: 0
+  m_ParentInteractableObject: {fileID: 0}
 --- !u!114 &1964133873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7542,6 +7944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1001 &2006374565
 PrefabInstance:
@@ -7781,6 +8184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1001 &2030538248
 PrefabInstance:
@@ -7870,6 +8274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &2036977645
 GameObject:
@@ -8098,6 +8503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!114 &2063765238
 MonoBehaviour:
@@ -8229,6 +8635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VRPCCC.Common.InteractableHighlight
   m_HighlightColor: {r: 1, g: 1, b: 0, a: 1}
   m_OutlineThickness: 0.01
+  m_OutlinePadding: 0.01
   m_IncludeChildBoxColliders: 1
 --- !u!1 &2111633107
 GameObject:
@@ -8242,6 +8649,7 @@ GameObject:
   - component: {fileID: 2111633111}
   - component: {fileID: 2111633110}
   - component: {fileID: 2111633109}
+  - component: {fileID: 2111633112}
   m_Layer: 0
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -8310,6 +8718,25 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
+--- !u!114 &2111633112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111633107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.UI.TrackedDeviceGraphicRaycaster
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!223 &2111633111
 Canvas:
   m_ObjectHideFlags: 0
@@ -8333,6 +8760,93 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!1 &3000000000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3000000001}
+  - component: {fileID: 3000000002}
+  - component: {fileID: 3000000003}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3000000001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000000000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3000000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &3000000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab68ce6587aab0146b8dabefbd806791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_ClickSpeed: 0.3
+  m_MoveDeadzone: 0.6
+  m_RepeatDelay: 0.5
+  m_RepeatRate: 0.1
+  m_TrackedDeviceDragThresholdMultiplier: 2
+  m_TrackedScrollDeltaMultiplier: 5
+  m_BypassUIToolkitEvents: 0
+  m_ActiveInputMode: 1
+  m_EnableXRInput: 1
+  m_EnableMouseInput: 1
+  m_EnableTouchInput: 1
+  m_EnableGamepadInput: 1
+  m_EnableJoystickInput: 1
+  m_PointAction: {fileID: 2869410428622933342, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_LeftClickAction: {fileID: 1855836014308820768, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_MiddleClickAction: {fileID: -6289560987278519447, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RightClickAction: {fileID: -2562941478296515153, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ScrollWheelAction: {fileID: 5825226938762934180, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_NavigateAction: {fileID: -7967456002180160679, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_SubmitAction: {fileID: 3994978066732806534, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_CancelAction: {fileID: 2387711382375263438, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_EnableBuiltinActionsAsFallback: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8345,3 +8859,4 @@ SceneRoots:
   - {fileID: 1887143551}
   - {fileID: 2006374565}
   - {fileID: 644480419}
+  - {fileID: 3000000000}

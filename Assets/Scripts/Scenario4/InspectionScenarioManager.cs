@@ -229,10 +229,9 @@ namespace VRPCCC.Scenario4
             if (m_AudioSource != null && m_CompletedSound != null)
                 m_AudioSource.PlayOneShot(m_CompletedSound);
 
-            // Hiện kết quả: Điểm số + Giải thích
+            // Hiện kết quả: Điểm số + từng giải thích theo vật phẩm
             string scoreText = string.Format(txt_Success, m_Score, m_InitialScore);
-            string summary = BuildSummary();
-            m_HUD?.ShowEnd(scoreText, summary);
+            m_HUD?.ShowEnd(scoreText, m_Results);
 
             OnInspectionCompleted?.Invoke(m_Score);
 

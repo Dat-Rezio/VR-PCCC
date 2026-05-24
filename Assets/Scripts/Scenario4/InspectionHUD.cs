@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace VRPCCC.Scenario4
 {
@@ -12,7 +14,7 @@ namespace VRPCCC.Scenario4
     /// 3 giai đoạn hiển thị:
     ///   1. BẮT ĐẦU  — Thông báo "Hãy tìm các vật thể nguy cơ" + số lượng
     ///   2. ĐANG TÌM — Tiến độ (đã tìm / tổng) + số lần chọn sai
-    ///   3. KẾT THÚC — Điểm số + Giải thích chi tiết
+    ///   3. KẾT THÚC — Điểm số + Từng giải thích theo vật phẩm
     /// 
     /// Setup trong Unity:
     ///   1. Tạo Canvas (World Space) gắn theo tay hoặc đầu người chơi
@@ -57,13 +59,44 @@ namespace VRPCCC.Scenario4
         [Tooltip("Text hiển thị giải thích chi tiết (có scroll nếu dài).")]
         [SerializeField] TextMeshProUGUI m_ExplanationText;
 
+        [Tooltip("Nút chuyển sang giải thích vật phẩm tiếp theo.")]
+        [SerializeField] Button m_NextExplanationButton;
+
+        [Tooltip("Label của nút chuyển tiếp (tuỳ chọn).")]
+        [SerializeField] TextMeshProUGUI m_NextExplanationButtonLabel;
+
+        [Header("Cỡ Chữ Màn Kết Thúc")]
+        [Tooltip("Cỡ chữ cho dòng điểm số ở màn kết thúc.")]
+        [SerializeField] float m_EndScoreFontSize = 40f;
+
+        [Tooltip("Cỡ chữ tối đa cho phần giải thích chi tiết ở màn kết thúc.")]
+        [SerializeField] float m_EndExplanationFontSize = 30f;
+
+        [Tooltip("Cỡ chữ tối thiểu cho phần giải thích chi tiết khi tự co giãn.")]
+        [SerializeField] float m_EndExplanationMinFontSize = 22f;
+
+        [Tooltip("Kích thước của EndPanel khi hiển thị ở giữa HUDCanvas.")]
+        [SerializeField] Vector2 m_EndPanelSize = new Vector2(650f, 450f);
+
+        List<InspectionScenarioManager.InspectionResult> m_EndResults = new List<InspectionScenarioManager.InspectionResult>();
+        int m_EndResultIndex = -1;
+
         // ──────────────────────────────────────────────────────────────────── //
         //  Runtime
         // ──────────────────────────────────────────────────────────────────── //
 
         void Awake()
         {
+            if (m_NextExplanationButton != null)
+                m_NextExplanationButton.onClick.AddListener(ShowNextExplanation);
+
             HideAll();
+        }
+
+        void OnDestroy()
+        {
+            if (m_NextExplanationButton != null)
+                m_NextExplanationButton.onClick.RemoveListener(ShowNextExplanation);
         }
 
         void OnEnable()
@@ -128,10 +161,104 @@ namespace VRPCCC.Scenario4
         {
             if (m_MainPanel != null) m_MainPanel.SetActive(false);
             if (m_EndPanel != null) m_EndPanel.SetActive(true);
-            if (m_ScoreText != null) m_ScoreText.text = scoreText;
-            if (m_ExplanationText != null) m_ExplanationText.text = explanationText;
+            CenterEndPanel();
+
+            m_EndResults.Clear();
+            m_EndResultIndex = -1;
+
+            if (m_ScoreText != null)
+            {
+                m_ScoreText.text = scoreText;
+                m_ScoreText.fontSize = m_EndScoreFontSize;
+            }
+
+            if (m_ExplanationText != null)
+            {
+                m_ExplanationText.text = explanationText;
+                m_ExplanationText.enableAutoSizing = true;
+                m_ExplanationText.fontSizeMax = m_EndExplanationFontSize;
+                m_ExplanationText.fontSizeMin = m_EndExplanationMinFontSize;
+                m_ExplanationText.fontSize = m_EndExplanationFontSize;
+            }
+
+            if (m_NextExplanationButton != null)
+                m_NextExplanationButton.gameObject.SetActive(false);
 
             EnsureVisible();
+        }
+
+        /// <summary>
+        /// Hiện panel kết thúc và cho phép xem giải thích từng vật phẩm bằng nút tiếp.
+        /// </summary>
+        public void ShowEnd(string scoreText, List<InspectionScenarioManager.InspectionResult> results)
+        {
+            if (m_MainPanel != null) m_MainPanel.SetActive(false);
+            if (m_EndPanel != null) m_EndPanel.SetActive(true);
+            CenterEndPanel();
+
+            m_EndResults = results != null
+                ? new List<InspectionScenarioManager.InspectionResult>(results)
+                : new List<InspectionScenarioManager.InspectionResult>();
+            m_EndResultIndex = -1;
+
+            if (m_ScoreText != null)
+            {
+                m_ScoreText.text = scoreText;
+                m_ScoreText.fontSize = m_EndScoreFontSize;
+            }
+
+            if (m_NextExplanationButton != null)
+                m_NextExplanationButton.gameObject.SetActive(m_EndResults.Count > 0);
+
+            ShowNextExplanation();
+            EnsureVisible();
+        }
+
+        /// <summary>
+        /// Chuyển sang giải thích vật phẩm tiếp theo.
+        /// </summary>
+        public void ShowNextExplanation()
+        {
+            if (m_EndResults == null || m_EndResults.Count == 0)
+            {
+                if (m_ExplanationText != null)
+                    m_ExplanationText.text = "<b>Không có vật phẩm nào để hiển thị.</b>";
+
+                if (m_NextExplanationButtonLabel != null)
+                    m_NextExplanationButtonLabel.text = "Tiếp";
+
+                return;
+            }
+
+            if (m_EndResultIndex >= m_EndResults.Count - 1)
+            {
+                CloseEndPanel();
+                return;
+            }
+
+            m_EndResultIndex++;
+            InspectionScenarioManager.InspectionResult result = m_EndResults[m_EndResultIndex];
+
+            if (m_ExplanationText != null)
+            {
+                string status = result.wasCorrect ? "✅ ĐÚNG" : "❌ SAI";
+                string detail = string.IsNullOrWhiteSpace(result.explanation)
+                    ? "<i>Chưa có giải thích chi tiết cho mục này.</i>"
+                    : result.explanation;
+
+                m_ExplanationText.text =
+                    $"<b>{status}: {result.itemName}</b>\n" +
+                    $"<size=85%>{detail}</size>\n\n" +
+                    $"<i>{m_EndResultIndex + 1}/{m_EndResults.Count}</i>";
+
+                m_ExplanationText.enableAutoSizing = true;
+                m_ExplanationText.fontSizeMax = m_EndExplanationFontSize;
+                m_ExplanationText.fontSizeMin = m_EndExplanationMinFontSize;
+                m_ExplanationText.fontSize = m_EndExplanationFontSize;
+            }
+
+            if (m_NextExplanationButtonLabel != null)
+                m_NextExplanationButtonLabel.text = (m_EndResultIndex >= m_EndResults.Count - 1) ? "Đóng" : "Tiếp";
         }
 
         /// <summary>
@@ -139,6 +266,8 @@ namespace VRPCCC.Scenario4
         /// </summary>
         public void ResetHUD()
         {
+            m_EndResults.Clear();
+            m_EndResultIndex = -1;
             HideAll();
         }
 
@@ -150,6 +279,32 @@ namespace VRPCCC.Scenario4
         {
             if (m_MainPanel != null) m_MainPanel.SetActive(false);
             if (m_EndPanel != null) m_EndPanel.SetActive(false);
+        }
+
+        void CenterEndPanel()
+        {
+            if (m_EndPanel == null)
+                return;
+
+            RectTransform endRect = m_EndPanel.transform as RectTransform;
+            if (endRect == null)
+                return;
+
+            endRect.anchorMin = new Vector2(0.5f, 0.5f);
+            endRect.anchorMax = new Vector2(0.5f, 0.5f);
+            endRect.pivot = new Vector2(0.5f, 0.5f);
+            endRect.anchoredPosition = Vector2.zero;
+            endRect.sizeDelta = m_EndPanelSize;
+            endRect.localScale = Vector3.one;
+        }
+
+        void CloseEndPanel()
+        {
+            if (m_EndPanel != null)
+                m_EndPanel.SetActive(false);
+
+            if (m_NextExplanationButtonLabel != null)
+                m_NextExplanationButtonLabel.text = "Tiếp";
         }
 
         void EnsureVisible()
