@@ -189,6 +189,7 @@ namespace VRPCCC.Scenario4
 
         /// <summary>
         /// Hiện panel kết thúc và cho phép xem giải thích từng vật phẩm bằng nút tiếp.
+        /// Chỉ hiển thị những vật phẩm có chứa nội dung giải thích.
         /// </summary>
         public void ShowEnd(string scoreText, List<InspectionScenarioManager.InspectionResult> results)
         {
@@ -196,9 +197,19 @@ namespace VRPCCC.Scenario4
             if (m_EndPanel != null) m_EndPanel.SetActive(true);
             CenterEndPanel();
 
-            m_EndResults = results != null
-                ? new List<InspectionScenarioManager.InspectionResult>(results)
-                : new List<InspectionScenarioManager.InspectionResult>();
+            // Lọc: Chỉ đưa vào danh sách những Result có explanation hợp lệ (không rỗng, không chứa toàn dấu cách)
+            m_EndResults = new List<InspectionScenarioManager.InspectionResult>();
+            if (results != null)
+            {
+                foreach (var res in results)
+                {
+                    if (!string.IsNullOrWhiteSpace(res.explanation))
+                    {
+                        m_EndResults.Add(res);
+                    }
+                }
+            }
+            
             m_EndResultIndex = -1;
 
             if (m_ScoreText != null)
@@ -207,6 +218,7 @@ namespace VRPCCC.Scenario4
                 m_ScoreText.fontSize = m_EndScoreFontSize;
             }
 
+            // Nếu không có vật phẩm nào có giải thích, ẩn nút tiếp
             if (m_NextExplanationButton != null)
                 m_NextExplanationButton.gameObject.SetActive(m_EndResults.Count > 0);
 
@@ -222,10 +234,10 @@ namespace VRPCCC.Scenario4
             if (m_EndResults == null || m_EndResults.Count == 0)
             {
                 if (m_ExplanationText != null)
-                    m_ExplanationText.text = "<b>Không có vật phẩm nào để hiển thị.</b>";
+                    m_ExplanationText.text = "<b>Không có vật phẩm nào cần giải thích thêm.</b>";
 
                 if (m_NextExplanationButtonLabel != null)
-                    m_NextExplanationButtonLabel.text = "Tiếp";
+                    m_NextExplanationButtonLabel.text = "Đóng"; // Chuyển thành Đóng vì không có danh sách để xem
 
                 return;
             }
@@ -242,9 +254,9 @@ namespace VRPCCC.Scenario4
             if (m_ExplanationText != null)
             {
                 string status = result.wasCorrect ? "✅ ĐÚNG" : "❌ SAI";
-                string detail = string.IsNullOrWhiteSpace(result.explanation)
-                    ? "<i>Chưa có giải thích chi tiết cho mục này.</i>"
-                    : result.explanation;
+                
+                // Đã lọc danh sách ở ShowEnd nên không cần check string rỗng nữa
+                string detail = result.explanation;
 
                 m_ExplanationText.text =
                     $"<b>{status}: {result.itemName}</b>\n" +

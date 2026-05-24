@@ -10851,6 +10851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c67ba3faf452c4c8d14638356bfb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimatedFacePlayer
+  facePlayer: 1
   keepUpright: 1
   zRotationOffset: 90
   enableFloat: 1
@@ -10859,6 +10860,9 @@ MonoBehaviour:
   enableSway: 0
   swayAmplitude: 0.03
   swaySpeed: 2
+  targetInteractable: {fileID: 0}
+  showAgainOnRelease: 0
+  followTarget: {fileID: 0}
 --- !u!212 &293998898
 SpriteRenderer:
   serializedVersion: 2
@@ -16207,9 +16211,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 2bca07200080f1b4db666a9671b3d29f, type: 3}
+  m_Resource: {fileID: 8300000, guid: c6f1c11ec971c3844834231f08c354b8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -22219,6 +22223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c67ba3faf452c4c8d14638356bfb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimatedFacePlayer
+  facePlayer: 1
   keepUpright: 1
   zRotationOffset: 90
   enableFloat: 1
@@ -22227,6 +22232,9 @@ MonoBehaviour:
   enableSway: 0
   swayAmplitude: 0.03
   swaySpeed: 2
+  targetInteractable: {fileID: 0}
+  showAgainOnRelease: 0
+  followTarget: {fileID: 0}
 --- !u!212 &1120366304
 SpriteRenderer:
   serializedVersion: 2
