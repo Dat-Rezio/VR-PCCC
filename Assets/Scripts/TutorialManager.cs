@@ -14,6 +14,10 @@ namespace VRPCCC.UI
         [TextArea(3, 5)]
         public string instructionText;
 
+        [Header("Vị trí hiển thị Canvas")]
+        [Tooltip("Kéo một Empty Object làm mốc vị trí vào đây. Nếu để trống, Canvas sẽ giữ nguyên vị trí cũ.")]
+        public Transform canvasLocation;
+
         [Header("Điều kiện qua bài (Action ID)")]
         [Tooltip("Nhập một mã hành động (Ví dụ: 'TouchDoor'). Để trống nếu bước này KHÔNG cần làm gì mà được Next luôn.")]
         public string requiredActionID;
@@ -78,6 +82,13 @@ namespace VRPCCC.UI
 
             if (instructionTextUI != null) instructionTextUI.text = currentStep.instructionText;
 
+            // DI CHUYỂN CANVAS TỚI VỊ TRÍ ĐÃ CÀI ĐẶT
+            if (currentStep.canvasLocation != null && tutorialCanvas != null)
+            {
+                tutorialCanvas.transform.position = currentStep.canvasLocation.position;
+                tutorialCanvas.transform.rotation = currentStep.canvasLocation.rotation;
+            }
+
             // KIỂM TRA ĐIỀU KIỆN
             if (string.IsNullOrEmpty(currentStep.requiredActionID))
             {
@@ -110,10 +121,6 @@ namespace VRPCCC.UI
             if (currentIndex > 0) ShowStep(currentIndex - 1);
         }
 
-        /// <summary>
-        /// GỌI HÀM NÀY TỪ SCRIPT KHÁC VÀ TRUYỀN VÀO MÃ HÀNH ĐỘNG
-        /// Ví dụ: tutorialManager.CompleteAction("TouchDoor");
-        /// </summary>
         public void CompleteAction(string actionID)
         {
             if (string.IsNullOrEmpty(actionID)) return;

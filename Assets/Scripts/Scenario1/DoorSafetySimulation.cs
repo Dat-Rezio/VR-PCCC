@@ -10,27 +10,31 @@ public class DoorSafetySimulation : MonoBehaviour
     public float toggleInterval = 5f;
 
     [Header("Cấu hình Dịch chuyển")]
-    public UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider teleportationProvider; // Kéo XR Origin (hoặc Main Camera Rig) vào đây
-    public Transform exitPoint;      // Vị trí đích ở hành lang (tạo một Empty Object ngoài hành lang)
+    public UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider teleportationProvider; 
+    public Transform exitPoint;      
 
-    [Header("Giao diện UI")]
-    public GameObject temperaturePanel;
-    public TextMeshProUGUI statusText;
-    public TextMeshProUGUI timerText; // (Tùy chọn) Hiển thị giây còn lại để đổi trạng thái
+    [Header("Giao diện UI (2 Panel riêng biệt)")]
+    public GameObject hotPanel;   // Kéo Panel "NÓNG" vào đây (có thể chứa hình lửa, text màu đỏ...)
+    public GameObject safePanel;  // Kéo Panel "AN TOÀN" vào đây (có thể chứa hình check xanh, text...)
+    public TextMeshProUGUI timerText; 
 
     [Header("Cấu hình Âm thanh")]
     public AudioSource audioSource;
-    public AudioClip openDoorSound;   // Tiếng mở cửa thành công
-    public AudioClip lockedSound;     // Tiếng cảnh báo/cửa khóa khi đang NÓNG (Tùy chọn)
+    public AudioClip openDoorSound;   
+    public AudioClip lockedSound;     
 
     [Header("Kết nối với Tutorial Manager")]
-    public VRPCCC.UI.TutorialManager tutorialManager; // Kéo object chứa TutorialManager vào đây
+    public VRPCCC.UI.TutorialManager tutorialManager; 
+    
+    // Biến theo dõi xem tay người chơi có đang ở gần cửa không
+    private bool isHandInZone = false; 
     
     private void Start()
     {
-        if (temperaturePanel != null) temperaturePanel.SetActive(false);
+        // Đảm bảo cả 2 panel đều tắt khi mới bắt đầu
+        if (hotPanel != null) hotPanel.SetActive(false);
+        if (safePanel != null) safePanel.SetActive(false);
         
-        // Bắt đầu vòng lặp tự động chuyển đổi trạng thái
         StartCoroutine(ToggleTemperatureRoutine());
     }
 
@@ -49,27 +53,24 @@ public class DoorSafetySimulation : MonoBehaviour
                 isHot = !isHot;
                 timer = toggleInterval;
                 Debug.Log("Trạng thái cửa đã đổi sang: " + (isHot ? "NÓNG" : "AN TOÀN"));
+                
+                // Cập nhật lại UI ngay lập tức nếu tay đang để ở cửa
                 UpdateUI();
             }
         }
     }
 
-    // Hàm này sẽ được gọi khi người chơi kích hoạt "Trigger" hoặc "Grab" trên cửa
-    // Trong Unity: Thêm event vào XR Simple Interactable -> Select Entered
     public void OnPlayerInteract()
     {
         if (!isHot)
         {
-            // 1. Phát âm thanh mở cửa
             if (audioSource != null && openDoorSound != null)
             {
                 audioSource.PlayOneShot(openDoorSound);
             }
 
-            // 2. Dịch chuyển
             ExecuteTeleport();
             
-            // 3. MỞ KHÓA HƯỚNG DẪN KHI ĐÃ CHẠM VÀO CỬA
             if (tutorialManager != null)
             {
                 tutorialManager.CompleteAction("OpenDoor");
@@ -79,7 +80,6 @@ public class DoorSafetySimulation : MonoBehaviour
         {
             Debug.Log("Cửa đang nóng, không thể mở để dịch chuyển!");
             
-            // Phát âm thanh báo lỗi/cửa khóa (nếu có)
             if (audioSource != null && lockedSound != null)
             {
                 audioSource.PlayOneShot(lockedSound);
@@ -91,15 +91,13 @@ public class DoorSafetySimulation : MonoBehaviour
     {
         if (teleportationProvider != null && exitPoint != null)
         {
-            // Tạo một yêu cầu dịch chuyển (Teleport Request)
             UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest request = new UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest()
             {
                 destinationPosition = exitPoint.position,
                 destinationRotation = exitPoint.rotation,
-                matchOrientation = UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.MatchOrientation.TargetUpAndForward // Khớp cả vị trí và hướng nhìn
+                matchOrientation = UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.MatchOrientation.TargetUpAndForward 
             };
 
-            // Gửi yêu cầu vào hàng đợi của Provider
             teleportationProvider.QueueTeleportRequest(request);
             
             Debug.Log("XRI: Đã thực hiện dịch chuyển bù trừ offset tự động.");
@@ -110,8 +108,8 @@ public class DoorSafetySimulation : MonoBehaviour
     {
         if (other.CompareTag("PlayerHand"))
         {
+            isHandInZone = true;
             UpdateUI();
-            temperaturePanel.SetActive(true);
         }
     }
 
@@ -119,16 +117,20 @@ public class DoorSafetySimulation : MonoBehaviour
     {
         if (other.CompareTag("PlayerHand"))
         {
-            temperaturePanel.SetActive(false);
+            isHandInZone = false;
+            // Khi rút tay ra, tắt cả 2 panel
+            if (hotPanel != null) hotPanel.SetActive(false);
+            if (safePanel != null) safePanel.SetActive(false);
         }
     }
 
     private void UpdateUI()
     {
-        if (statusText != null)
+        // Chỉ xử lý bật/tắt hình ảnh khi tay người chơi thực sự đang ở trong vùng Trigger
+        if (isHandInZone)
         {
-            statusText.text = isHot ? "NÓNG QUÁ!!! Nhiệt độ ngoài cửa đang rất cao.\nĐừng mở cửa, nguy hiểm!" : "AN TOÀN! Nhiệt độ ngoài cửa đang bình thường.\nBạn có thể mở cửa.";
-            statusText.color = isHot ? Color.red : Color.green;
+            if (hotPanel != null) hotPanel.SetActive(isHot);
+            if (safePanel != null) safePanel.SetActive(!isHot);
         }
     }
 }

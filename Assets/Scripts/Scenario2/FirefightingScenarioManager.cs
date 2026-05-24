@@ -17,6 +17,32 @@ namespace VRPCCC.Scenario2
         [SerializeField] FireSource m_BedroomFire;
         [SerializeField] ScenarioHUD m_HUD;
 
+        [Header("Cấu Hình Di Chuyển Canvas")]
+        [Tooltip("Kéo Object Canvas Hướng Dẫn vào đây")]
+        public Transform tutorialCanvas; 
+
+        // --- CẬP NHẬT: TÁCH RIÊNG CÁC ĐIỂM NEO THEO TỪNG GIAI ĐOẠN ---
+        
+        [Header("Điểm Neo Khởi Đầu")]
+        public Transform anchor_StartIdle;
+
+        [Header("Điểm Neo Phase 1 (Cháy Tủ Lạnh)")]
+        public Transform anchor_FirePhase1;
+        public Transform anchor_AtCabinetPhase1;
+        public Transform anchor_CheckDistance_Phase1;
+        public Transform anchor_PullPin_Phase1;
+        public Transform anchor_AimNozzle_Phase1;
+        public Transform anchor_Spraying_Phase1;
+        public Transform anchor_Phase1Done;
+
+        [Header("Điểm Neo Phase 2 (Cháy Phòng Ngủ)")]
+        public Transform anchor_FirePhase2;
+        public Transform anchor_AtCabinetPhase2;
+        public Transform anchor_CheckDistance_Phase2;
+        public Transform anchor_PullPin_Phase2;
+        public Transform anchor_AimNozzle_Phase2;
+        public Transform anchor_Spraying_Phase2;
+
         public int CurrentPhase { get; private set; } = 1;
         public FireSource GetActiveFire() => CurrentPhase == 1 ? m_FridgeFire : m_BedroomFire;
 
@@ -27,7 +53,6 @@ namespace VRPCCC.Scenario2
         [SerializeField] public float m_MinFireDistance = 2f;
         [SerializeField] public float m_MaxFireDistance = 3f;
 
-        // --- CODE MỚI: ĐƯA NỘI DUNG HƯỚNG DẪN RA INSPECTOR ---
         [Header("Nội Dung Hướng Dẫn (Có thể tùy chỉnh)")]
         [TextArea(2, 4)] public string txt_StartIdle = "Quan sát môi trường xung quanh...";
         [TextArea(2, 4)] public string txt_FirePhase1 = "<b>🔥 PHÁT HIỆN CHÁY TỦ LẠNH KHU BẾP!</b>\nTiếp cận tủ PCCC.";
@@ -49,7 +74,6 @@ namespace VRPCCC.Scenario2
         int           m_Score;
         float         m_ElapsedTime;
         bool          m_TimerRunning;
-
         bool          m_IsPinAlreadyPulled = false;
 
         public ScenarioState CurrentState => m_State;
@@ -61,7 +85,7 @@ namespace VRPCCC.Scenario2
         {
             CurrentPhase = 1;
             SetState(ScenarioState.Idle);
-            m_HUD?.ShowStep(txt_StartIdle);
+            ShowStepAtAnchor(txt_StartIdle, anchor_StartIdle);
         }
 
         void Update()
@@ -77,6 +101,16 @@ namespace VRPCCC.Scenario2
             }
         }
 
+        private void ShowStepAtAnchor(string text, Transform anchor)
+        {
+            m_HUD?.ShowStep(text);
+            if (tutorialCanvas != null && anchor != null)
+            {
+                tutorialCanvas.position = anchor.position;
+                tutorialCanvas.rotation = anchor.rotation;
+            }
+        }
+
         public void OnFireIgnited()
         {
             if (m_State != ScenarioState.Idle) return;
@@ -84,14 +118,17 @@ namespace VRPCCC.Scenario2
             m_TimerRunning = true;
             OnScenarioStart?.Invoke();
 
-            m_HUD?.ShowStep(CurrentPhase == 1 ? txt_FirePhase1 : txt_FirePhase2);
+            if (CurrentPhase == 1) ShowStepAtAnchor(txt_FirePhase1, anchor_FirePhase1);
+            else ShowStepAtAnchor(txt_FirePhase2, anchor_FirePhase2);
         }
 
         public void OnPlayerApproachCabinet()
         {
             if (m_State != ScenarioState.ApproachCabinet) return;
             SetState(ScenarioState.SelectEquipment);
-            m_HUD?.ShowStep(CurrentPhase == 1 ? txt_AtCabinetPhase1 : txt_AtCabinetPhase2);
+            
+            if (CurrentPhase == 1) ShowStepAtAnchor(txt_AtCabinetPhase1, anchor_AtCabinetPhase1);
+            else ShowStepAtAnchor(txt_AtCabinetPhase2, anchor_AtCabinetPhase2);
         }
 
         public void OnExtinguisherGrabbed(bool isCO2)
@@ -102,7 +139,10 @@ namespace VRPCCC.Scenario2
             if (isCorrect)
             {
                 SetState(ScenarioState.CheckDistance);
-                m_HUD?.ShowStep(txt_CheckDistance);
+                
+                // Lựa chọn điểm neo dựa theo Phase hiện tại
+                Transform anchor = CurrentPhase == 1 ? anchor_CheckDistance_Phase1 : anchor_CheckDistance_Phase2;
+                ShowStepAtAnchor(txt_CheckDistance, anchor);
             }
             else
             {
@@ -130,18 +170,17 @@ namespace VRPCCC.Scenario2
             }
             else
             {
-                // KHOẢNG CÁCH ĐÃ ĐÚNG! Giờ kiểm tra xem đã rút chốt chưa?
                 if (m_IsPinAlreadyPulled)
                 {
-                    // Nếu đã rút từ trước -> Nhảy cóc sang bước AimNozzle luôn
                     SetState(ScenarioState.AimNozzle);
-                    m_HUD?.ShowStep("<b>Khoảng cách tốt và chốt đã mở!</b>\n" + txt_AimNozzle);
+                    Transform anchor = CurrentPhase == 1 ? anchor_AimNozzle_Phase1 : anchor_AimNozzle_Phase2;
+                    ShowStepAtAnchor("<b>Khoảng cách tốt và chốt đã mở!</b>\n" + txt_AimNozzle, anchor);
                 }
                 else
                 {
-                    // Nếu chưa rút -> Chuyển sang bước bắt rút chốt bình thường
                     SetState(ScenarioState.PullPin);
-                    m_HUD?.ShowStep(txt_PullPin);
+                    Transform anchor = CurrentPhase == 1 ? anchor_PullPin_Phase1 : anchor_PullPin_Phase2;
+                    ShowStepAtAnchor(txt_PullPin, anchor);
                 }
                 return true;
             }
@@ -149,14 +188,13 @@ namespace VRPCCC.Scenario2
 
         public void OnPinPulled()
         {
-            // 1. Luôn ghi nhớ là người chơi ĐÃ rút chốt (dù rút sớm)
             m_IsPinAlreadyPulled = true; 
 
-            // 2. Nếu kịch bản đang kẹt ở đúng bước chờ rút chốt, thì cho đi tiếp ngay
             if (m_State == ScenarioState.PullPin)
             {
                 SetState(ScenarioState.AimNozzle);
-                m_HUD?.ShowStep(txt_AimNozzle);
+                Transform anchor = CurrentPhase == 1 ? anchor_AimNozzle_Phase1 : anchor_AimNozzle_Phase2;
+                ShowStepAtAnchor(txt_AimNozzle, anchor);
             }
         }
 
@@ -166,7 +204,8 @@ namespace VRPCCC.Scenario2
             if (onTarget)
             {
                 SetState(ScenarioState.Spraying);
-                m_HUD?.ShowStep(txt_Spraying);
+                Transform anchor = CurrentPhase == 1 ? anchor_Spraying_Phase1 : anchor_Spraying_Phase2;
+                ShowStepAtAnchor(txt_Spraying, anchor);
             }
         }
 
@@ -183,7 +222,7 @@ namespace VRPCCC.Scenario2
             {
                 m_TimerRunning = false; 
                 SetState(ScenarioState.Idle);
-                m_HUD?.ShowStep(txt_Phase1Done);
+                ShowStepAtAnchor(txt_Phase1Done, anchor_Phase1Done);
                 CurrentPhase = 2; 
                 StartCoroutine(TriggerPhase2Delayed());
             }
@@ -200,7 +239,7 @@ namespace VRPCCC.Scenario2
         IEnumerator TriggerPhase2Delayed()
         {
             yield return new WaitForSeconds(4f);
-            m_IsPinAlreadyPulled = false; // Reset trí nhớ cho bình mới
+            m_IsPinAlreadyPulled = false; 
             if (m_BedroomFire != null) m_BedroomFire.Ignite();
         }
 
@@ -215,9 +254,10 @@ namespace VRPCCC.Scenario2
             m_Score = m_InitialScore;
             m_ElapsedTime = 0f;
             m_TimerRunning = false;
-            m_IsPinAlreadyPulled = false; // Reset trí nhớ
+            m_IsPinAlreadyPulled = false; 
             CurrentPhase = 1;
             SetState(ScenarioState.Idle);
+            ShowStepAtAnchor(txt_StartIdle, anchor_StartIdle);
             m_FridgeFire?.ResetFire();
             m_BedroomFire?.ResetFire();
             m_HUD?.ResetHUD();

@@ -12,7 +12,7 @@ namespace VRPCCC.Common
         [Header("Highlight Settings")]
         [Tooltip("Màu của viền highlight.")]
         [ColorUsage(true, true)]
-        [SerializeField] private Color m_HighlightColor = new Color(1f, 1f, 0f, 1f);
+        [SerializeField] private Color m_HighlightColor = new Color(0f, 1f, 0f, 1f);
 
         [Tooltip("Độ dày của viền highlight theo đơn vị thế giới.")]
         [Min(0.0001f)]

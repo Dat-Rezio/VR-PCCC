@@ -1,0 +1,11 @@
+Model Information:
+* title:	Fire Department Building
+* source:	https://sketchfab.com/3d-models/fire-department-building-6f95f738a4ed4ad1853b4185629b403b
+* author:	jimbogies (https://sketchfab.com/jimbogies)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Fire Department Building" (https://sketchfab.com/3d-models/fire-department-building-6f95f738a4ed4ad1853b4185629b403b) by jimbogies (https://sketchfab.com/jimbogies) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

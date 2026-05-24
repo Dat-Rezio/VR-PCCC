@@ -7,6 +7,8 @@ TagManager:
   - Anchor
   - PlayerHand
   - Root_Fire
+  - Towel
+  - Water
   layers:
   - Default
   - TransparentFX

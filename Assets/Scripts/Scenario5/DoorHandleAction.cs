@@ -1,41 +1,84 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+ // Bắt buộc để gọi Locomotion System
 
-// Xóa RequireComponent để tránh tự động thêm nếu bạn đã lỡ thiết lập
-public class DoorHandleAction : MonoBehaviour
+public class DoorHandleDirectPhysics : MonoBehaviour
 {
     [Header("Cài đặt UI Cảnh báo")]
-    public GameObject warningUI; 
+    public GameObject warningUI;
 
-    [Header("Cài đặt Dịch chuyển (Game Over)")]
-    public Transform playerRig; 
-    public Transform fireCorridorSpawnPoint; 
+    [Header("Cài đặt Dịch chuyển (Locomotion)")]
+    [Tooltip("Kéo object chứa Teleportation Provider vào đây")]
+    public UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider teleportationProvider; 
+    [Tooltip("Kéo một object rỗng đặt ngoài hành lang vào đây")]
+    public Transform fireCorridorSpawnPoint;
+
+    [Header("Cài đặt Nút bấm (Trigger)")]
+    [Tooltip("Kéo Action bóp cò của tay cầm vào đây (VD: XRI RightHand/Select)")]
+    public InputActionReference triggerAction;
+
+    private bool isHandHovering = false;
 
     void Awake()
     {
-        // Đảm bảo UI luôn tắt khi bắt đầu
+        // Tắt UI khi game mới chạy
         if (warningUI != null) warningUI.SetActive(false);
     }
 
-    // Hàm bật UI (Gán vào Hover Entered)
-    public void ShowWarningUI()
+    void Update()
     {
-        if (warningUI != null) warningUI.SetActive(true);
-    }
-
-    // Hàm tắt UI (Gán vào Hover Exited)
-    public void HideWarningUI()
-    {
-        if (warningUI != null) warningUI.SetActive(false);
-    }
-
-    // Hàm dịch chuyển (Gán vào Select Entered)
-    public void TriggerGameOver()
-    {
-        if (playerRig != null && fireCorridorSpawnPoint != null)
+        // Nếu tay đang chạm vào nắm cửa VÀ bóp cò (Trigger)
+        if (isHandHovering && triggerAction != null && triggerAction.action.WasPressedThisFrame())
         {
-            playerRig.position = fireCorridorSpawnPoint.position;
-            playerRig.rotation = fireCorridorSpawnPoint.rotation;
-            Debug.Log("NGUY HIỂM! Đã mở cửa ra ngoài!");
+            ExecuteTeleport();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Kiểm tra xem object chạm vào có đúng là bàn tay không
+        if (other.CompareTag("PlayerHand"))
+        {
+            isHandHovering = true;
+            if (warningUI != null) warningUI.SetActive(true);
+        }
+        Scenario5Manager.Instance.CompleteTask(0);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Khi rút tay ra
+        if (other.CompareTag("PlayerHand"))
+        {
+            isHandHovering = false;
+            if (warningUI != null) warningUI.SetActive(false);
+        }
+    }
+
+    private void ExecuteTeleport()
+    {
+        if (teleportationProvider != null && fireCorridorSpawnPoint != null)
+        {
+            // 1. Tạo một yêu cầu dịch chuyển chuẩn của XR Locomotion
+            UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest request = new UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest()
+            {
+                destinationPosition = fireCorridorSpawnPoint.position,
+                destinationRotation = fireCorridorSpawnPoint.rotation,
+                matchOrientation = UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.MatchOrientation.TargetUpAndForward // Ép người chơi xoay mặt theo đúng trục Z của điểm đích
+            };
+
+            // 2. Đẩy yêu cầu vào hàng đợi để Locomotion System xử lý
+            teleportationProvider.QueueTeleportRequest(request);
+            
+            // 3. Reset trạng thái
+            isHandHovering = false;
+            if (warningUI != null) warningUI.SetActive(false);
+            
+            Debug.Log("Game Over: Đã dịch chuyển bằng Locomotion!");
+        }
+        else
+        {
+            Debug.LogWarning("Chưa gán Teleportation Provider hoặc Điểm đích!");
         }
     }
 }
