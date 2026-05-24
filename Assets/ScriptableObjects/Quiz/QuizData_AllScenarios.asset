@@ -54,11 +54,11 @@ MonoBehaviour:
       \u0111\u1ED9c t\xEDch t\u1EE5 \u1EDF ph\xEDa tr\xEAn. Kh\xF4ng kh\xED s\u1EA1ch
       h\u01A1n \u1EDF g\u1EA7n s\xE0n nh\xE0."
     scenarioTag: 1
-  - questionText: "B\xECnh ch\u1EEFa ch\xE1y kh\xED CO\u2082 th\xEDch h\u1EE3p \u0111\u1EC3
+  - questionText: "B\xECnh ch\u1EEFa ch\xE1y kh\xED CO2 th\xEDch h\u1EE3p \u0111\u1EC3
       d\u1EADp \u0111\xE1m ch\xE1y thi\u1EBFt b\u1ECB \u0111i\u1EC7n, \u0111i\u1EC7n
       t\u1EED."
     correctAnswer: 1
-    explanation: "CO\u2082 kh\xF4ng d\u1EABn \u0111i\u1EC7n v\xE0 kh\xF4ng \u0111\u1EC3
+    explanation: "CO2 kh\xF4ng d\u1EABn \u0111i\u1EC7n v\xE0 kh\xF4ng \u0111\u1EC3
       l\u1EA1i ch\u1EA5t b\u1EA9n, r\u1EA5t ph\xF9 h\u1EE3p cho \u0111\xE1m ch\xE1y
       \u0111i\u1EC7n v\xE0 \u0111\xE1m ch\xE1y ch\u1EA5t l\u1ECFng nh\u01B0 t\u1EE7
       l\u1EA1nh."
@@ -89,7 +89,7 @@ MonoBehaviour:
       Aim (h\u01B0\u1EDBng v\xF2i), Squeeze (b\xF3p c\xF2), Sweep (qu\xE9t ngang).
       Lu\xF4n nh\u1EAFm v\xE0o G\u1ED0C l\u1EEDa, kh\xF4ng ph\u1EA3i ng\u1ECDn l\u1EEDa."
     scenarioTag: 2
-  - questionText: "B\xECnh kh\xED CO\u2082 \u0111\u1EC3 l\xE2u kh\xF4ng d\xF9ng v\u1EABn
+  - questionText: "B\xECnh kh\xED CO2 \u0111\u1EC3 l\xE2u kh\xF4ng d\xF9ng v\u1EABn
       lu\xF4n \u0111\u1EA7y v\xE0 s\u1EB5n s\xE0ng s\u1EED d\u1EE5ng m\xE0 kh\xF4ng
       c\u1EA7n b\u1EA3o tr\xEC."
     correctAnswer: 0

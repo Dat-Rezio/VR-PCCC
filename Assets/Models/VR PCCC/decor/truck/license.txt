@@ -1,0 +1,11 @@
+Model Information:
+* title:	firetruck
+* source:	https://sketchfab.com/3d-models/firetruck-cb0c3a0c2dcb4b68a8de4ffb3265157d
+* author:	Niclas (https://sketchfab.com/niclas.schoepe)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "firetruck" (https://sketchfab.com/3d-models/firetruck-cb0c3a0c2dcb4b68a8de4ffb3265157d) by Niclas (https://sketchfab.com/niclas.schoepe) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

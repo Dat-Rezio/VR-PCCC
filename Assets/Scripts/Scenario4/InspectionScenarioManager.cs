@@ -48,6 +48,9 @@ namespace VRPCCC.Scenario4
         [Tooltip("Điểm khởi đầu.")]
         [SerializeField] int m_InitialScore = 100;
 
+        [Tooltip("Số điểm bị trừ đi mỗi khi chọn sai một vật phẩm.")]
+        [SerializeField] int m_WrongPenalty = 5;
+
         [Header("Nội Dung Hướng Dẫn (Tùy chỉnh trong Inspector)")]
         [TextArea(2, 4)] public string txt_Welcome = "<b>📋 KIỂM TRA AN TOÀN PCCC</b>\nHãy tìm các vật thể có nguy cơ cháy nổ!\nSố lượng vật thể nguy cơ: <b>{0}</b>";
         [TextArea(2, 4)] public string txt_Progress = "<b>📋 TIẾN ĐỘ KIỂM TRA</b>\nĐã tìm được: <b>{0} / {1}</b>\nSố lần chọn sai: <b>{2}</b>";
@@ -145,7 +148,7 @@ namespace VRPCCC.Scenario4
             if (m_State != InspectionState.Inspecting) return;
 
             m_CorrectCount++;
-            m_Score += points;
+            //m_Score += points;
 
             // Lưu kết quả
             m_Results.Add(new InspectionResult
@@ -153,7 +156,7 @@ namespace VRPCCC.Scenario4
                 itemName = itemName,
                 explanation = explanation,
                 wasCorrect = true,
-                pointsChanged = points
+                pointsChanged = 0
             });
 
             Debug.Log($"[Scenario4] ✅ Đúng! {itemName} (+{points}). Tổng: {m_CorrectCount}/{m_TotalHazards}. Điểm: {m_Score}");
@@ -179,7 +182,8 @@ namespace VRPCCC.Scenario4
             if (m_State != InspectionState.Inspecting) return;
 
             m_WrongCount++;
-            m_Score -= penalty;
+            //m_Score -= penalty;
+            m_Score -= m_WrongPenalty; // Sử dụng penalty cố định từ Inspector
 
             // Lưu kết quả
             m_Results.Add(new InspectionResult
@@ -187,7 +191,7 @@ namespace VRPCCC.Scenario4
                 itemName = itemName,
                 explanation = "",
                 wasCorrect = false,
-                pointsChanged = -penalty
+                pointsChanged = -m_WrongPenalty
             });
 
             Debug.Log($"[Scenario4] ❌ Sai! {itemName} (-{penalty}). Điểm: {m_Score}");

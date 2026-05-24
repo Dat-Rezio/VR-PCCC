@@ -80,7 +80,7 @@ namespace VRPCCC.Quiz
         [Tooltip("Panel hiển thị kết quả sau khi người chơi trả lời.")]
         [SerializeField] GameObject m_FeedbackPanel;
 
-        [Tooltip("Text kết quả: '✅ ĐÚNG!' hoặc '❌ SAI!'")]
+        [Tooltip("Text kết quả: 'ĐÚNG!' hoặc 'SAI!'")]
         [SerializeField] TextMeshProUGUI m_FeedbackResultText;
 
         [Tooltip("Text giải thích chi tiết lý do đúng/sai.")]
@@ -108,19 +108,19 @@ namespace VRPCCC.Quiz
 
         // ── Nội dung tùy chỉnh ──
         [Header("Nội Dung Tùy Chỉnh")]
-        [SerializeField] string m_TrueBtnText  = "✔ ĐÚNG";
-        [SerializeField] string m_FalseBtnText = "✘ SAI";
-        [SerializeField] string m_CorrectFeedbackText = "✅ ĐÚNG!";
-        [SerializeField] string m_WrongFeedbackText   = "❌ SAI!";
+        [SerializeField] string m_TrueBtnText  = "ĐÚNG";
+        [SerializeField] string m_FalseBtnText = "SAI";
+        [SerializeField] string m_CorrectFeedbackText = "ĐÚNG!";
+        [SerializeField] string m_WrongFeedbackText   = "SAI!";
 
         [Header("Tiền tố nhãn kịch bản (Tùy chỉnh)")]
         [SerializeField] string[] m_ScenarioTagLabels = new string[]
         {
-            "📋 Tổng quát",
-            "📍 Kịch bản 1 — Kiểm tra nhiệt độ cửa",
-            "📍 Kịch bản 2 — Chữa cháy bằng bình",
-            "📍 Kịch bản 3 — Thoát hiểm",
-            "📍 Kịch bản 4 — Kiểm tra nguy cơ",
+            "Tổng quát",
+            "Kịch bản 1 — Kiểm tra nhiệt độ cửa",
+            "Kịch bản 2 — Chữa cháy bằng bình",
+            "Kịch bản 3 — Thoát hiểm",
+            "Kịch bản 4 — Kiểm tra nguy cơ",
         };
 
         // ──────────────────────────────────────────────────────── //
@@ -246,9 +246,9 @@ namespace VRPCCC.Quiz
             EnsureHUDVisible();
 
             float accuracy = totalCount > 0 ? (float)correctCount / totalCount : 0f;
-            string grade = accuracy >= 0.8f ? "🏆 Xuất sắc!" :
-                           accuracy >= 0.6f ? "✅ Đạt yêu cầu" :
-                                              "📖 Cần ôn tập thêm";
+            string grade = accuracy >= 0.8f ? "Xuất sắc!" :
+                           accuracy >= 0.6f ? "Đạt yêu cầu" :
+                                              "Cần ôn tập thêm";
 
             if (m_FinalScoreText != null)
                 m_FinalScoreText.text = $"<b>Điểm: {score} / {maxScore}</b>";
